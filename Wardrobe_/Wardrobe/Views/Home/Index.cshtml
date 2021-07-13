@@ -1,0 +1,53 @@
+﻿@{
+        ViewData["Title"]= "Home Page";
+        string[] TableHeaders = new string[] {
+
+            "Id"
+          ,"UserName"
+          ,"NormalizedUserName"
+          ,"Email"};
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<div class="table">
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                @{
+                    foreach (var head in TableHeaders)
+                    {
+                        <th>
+                            @head
+                        </th>
+
+                    }
+                }
+
+            </tr>
+        </thead>
+        @{
+            if (Model != null)
+            {
+                foreach (var Data in Model)
+                {
+                <tr>
+                    <td>@Data.Id</td>
+                    <td>@Data.UserName</td>
+                    <td>@Data.NormalizedUserName</td>
+                    <td>@Data.Email</td>
+                </tr>
+                }
+
+            }
+        }
+
+        <tbody>
+        </tbody>
+    </table>
+</div>
+
+<img src="../wwwroot/uploads/436d5514-9411-48e0-8995-d3936ab35131-None.jpg" alt="Girl in a jacket">
