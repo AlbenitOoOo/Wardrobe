@@ -83,3 +83,5 @@ C:\Users\Michal\Documents\GitHub\Wardrobe\Wardrobe\Wardrobe\obj\Debug\net5.0\War
 C:\Users\Michal\Documents\GitHub\Wardrobe\Wardrobe\Wardrobe\obj\Debug\net5.0\ref\Wardrobe.dll
 C:\Users\Michal\Documents\GitHub\Wardrobe\Wardrobe\Wardrobe\obj\Debug\net5.0\Wardrobe.pdb
 C:\Users\Michal\Documents\GitHub\Wardrobe\Wardrobe\Wardrobe\obj\Debug\net5.0\Wardrobe.genruntimeconfig.cache
+C:\Users\Michal\Documents\GitHub\Wardrobe\Wardrobe\Wardrobe\obj\Debug\net5.0\Wardrobe.Properties.Resources.resources
+C:\Users\Michal\Documents\GitHub\Wardrobe\Wardrobe\Wardrobe\obj\Debug\net5.0\Wardrobe.csproj.GenerateResource.cache
