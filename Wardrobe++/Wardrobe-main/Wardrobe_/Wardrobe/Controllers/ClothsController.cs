@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -21,14 +22,14 @@ namespace Wardrobe.Controllers
             _context = context;
             this._hostEnvironment = hostEnvironment;
         }
-
+        [Authorize]
         // GET: Cloths
         public async Task<IActionResult> Index()
         {
             var applicationDbContext = _context.Cloths.Include(c => c.Color).Include(c => c.Kind);
             return View(await applicationDbContext.ToListAsync());
         }
-
+        [Authorize]
         // GET: Cloths/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -48,15 +49,15 @@ namespace Wardrobe.Controllers
 
             return View(cloths);
         }
-
+        [Authorize]
         // GET: Cloths/Create
         public IActionResult Create()
         {
-            ViewData["ColorId"] = new SelectList(_context.Color, "Id", "Id");
-            ViewData["KindId"] = new SelectList(_context.Kind, "Id", "Id");
+            ViewData["ColorId"] = new SelectList(_context.Color, "Id", "Name");
+            ViewData["KindId"] = new SelectList(_context.Kind, "Id", "Name");
             return View();
         }
-
+        [Authorize]
         // POST: Cloths/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -91,7 +92,7 @@ namespace Wardrobe.Controllers
             ViewData["KindId"] = new SelectList(_context.Kind, "Id", "Id", cloths.KindId);
             return View(cloths);
         }
-
+        [Authorize]
         // GET: Cloths/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -113,6 +114,7 @@ namespace Wardrobe.Controllers
         // POST: Cloths/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Description,Category,KindId,ColorId,CoverImageUrl,CreatedOn")] Cloths cloths)
@@ -148,6 +150,7 @@ namespace Wardrobe.Controllers
         }
 
         // GET: Cloths/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -168,6 +171,7 @@ namespace Wardrobe.Controllers
         }
 
         // POST: Cloths/Delete/5
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
