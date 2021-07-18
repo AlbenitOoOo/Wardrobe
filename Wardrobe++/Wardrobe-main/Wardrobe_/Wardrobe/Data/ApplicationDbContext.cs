@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Wardrobe.Models;
 
 namespace Wardrobe.Data
 {
@@ -17,6 +18,8 @@ namespace Wardrobe.Data
         public DbSet<ClothGallery> ClothGallery { get; set; }
         public DbSet<Color> Color { get; set; }
         public DbSet<Kind> Kind { get; set; }
+
+        public DbSet<LoginModel> LoginModel { get; set; }
     }
 }
 

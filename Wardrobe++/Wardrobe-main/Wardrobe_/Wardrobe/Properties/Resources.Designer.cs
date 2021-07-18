@@ -61,7 +61,7 @@ namespace Wardrobe.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Server=&quot;(localdb)\MSSQLLocalDB&quot;;database=&quot;Wardrobe&quot;;integrated security = SSPI;.
+        ///   Looks up a localized string similar to Server=&quot;(localdb)\MSSQLLocalDB&quot;;database=&quot;Clothes&quot;;integrated security = SSPI;.
         /// </summary>
         internal static string ConnectionString {
             get {
