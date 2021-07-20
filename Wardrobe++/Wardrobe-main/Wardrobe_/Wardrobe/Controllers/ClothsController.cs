@@ -28,39 +28,13 @@ namespace Wardrobe.Controllers
         }
         [Authorize]
 
-        //public ActionResult Add(string id = "")
-        //{
-        //    var model = _db.Users
-        //            .OrderBy(r => r.UserName)
-        //            .Where(r => r.Id == id).ToList()
-        //            .Select(r => new FriendsList
-        //            {
-        //                RequesterID = HttpContext.User.Identity.GetUserId().ToString(),
-        //                RequesteeID = id,
-        //                UserName = r.UserName,
-        //                Status = "NewRequest",
-        //                RequestDate = DateTime.Now,
-        //                AcknowledgeDate = DateTime.Now
-        //            })
-        //            .FirstOrDefault();
-
-        //    if (model == null)
-        //    {
-        //        // handle not found
-        //    }
-
-        //    return View(model);
-             
             // GET: Cloths
             public async Task<IActionResult> Index()
             {
                 //var user = await _userManager.FindByNameAsync(User.Identity.Name);
 
                 var applicationDbContext = _context.Cloths.Include(c => c.Color).Include(c => c.Kind).Where(c => c.Category.Equals(User.Identity.Name));
-                //var model = _context.Cloths
-                //.OrderBy(r => r.Category)
-                //.Where(r => r.Category == @User.Identity.Name)
-                //.Select(r => new applicationDbContext );
+                
             
                 
            
@@ -106,10 +80,6 @@ namespace Wardrobe.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Title,Description,Category,KindId,ColorId,ImageFile,CreatedOn")] Cloths cloths)
-        //CoverImageUrl = ImageName
-        //cloths = imageModel
-        //cloths.CoverImageUrl = fileName + DateTime.Now.ToString("yymmssfff") + extension;
-        //cloths.CoverImageUrl = Guid.NewGuid().ToString() + "-";
         {
             if (ModelState.IsValid)
             {
