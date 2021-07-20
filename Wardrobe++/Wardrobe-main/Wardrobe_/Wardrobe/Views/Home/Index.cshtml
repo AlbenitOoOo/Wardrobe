@@ -1,11 +1,16 @@
 ﻿@{
-        ViewData["Title"]= "Home Page";
-        string[] TableHeaders = new string[] {
+    ViewData["Title"]= "Home Page";
+    string[] TableHeaders = new string[] {
 
             "Id"
           ,"UserName"
           ,"NormalizedUserName"
-          ,"Email"};
+          ,"Email"
+          ,"Category"
+          ,"CoverImageUrl"
+
+
+        };
 }
 
 <div class="text-center">
@@ -39,6 +44,8 @@
                     <td>@Data.UserName</td>
                     <td>@Data.NormalizedUserName</td>
                     <td>@Data.Email</td>
+                    @*<td>@Data.Category</td>
+                    <td>@Data.CoverImageUrl</td>*@
                 </tr>
                 }
 

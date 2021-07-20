@@ -16,6 +16,7 @@ namespace Wardrobe.Controllers
         public ColorsController(ApplicationDbContext context)
         {
             _context = context;
+            
         }
 
         // GET: Colors

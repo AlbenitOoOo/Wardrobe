@@ -5,34 +5,75 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Wardrobe.Data;
+using Wardrobe.Models;
 
 namespace Wardrobe.Controllers
 {
     public class ClothsController : Controller
     {
         private readonly ApplicationDbContext _context ;
+        private readonly UserManager<IdentityUser> _userManager;
         private readonly IWebHostEnvironment _hostEnvironment;
 
-        public ClothsController(ApplicationDbContext context, IWebHostEnvironment hostEnvironment)
+        public ClothsController(ApplicationDbContext context, UserManager<IdentityUser> userManager, IWebHostEnvironment hostEnvironment)
         {
             _context = context;
+            _userManager = userManager;
             this._hostEnvironment = hostEnvironment;
         }
         [Authorize]
-        // GET: Cloths
-        public async Task<IActionResult> Index()
-        {
-            var applicationDbContext = _context.Cloths.Include(c => c.Color).Include(c => c.Kind);
-            return View(await applicationDbContext.ToListAsync());
-        }
+
+        //public ActionResult Add(string id = "")
+        //{
+        //    var model = _db.Users
+        //            .OrderBy(r => r.UserName)
+        //            .Where(r => r.Id == id).ToList()
+        //            .Select(r => new FriendsList
+        //            {
+        //                RequesterID = HttpContext.User.Identity.GetUserId().ToString(),
+        //                RequesteeID = id,
+        //                UserName = r.UserName,
+        //                Status = "NewRequest",
+        //                RequestDate = DateTime.Now,
+        //                AcknowledgeDate = DateTime.Now
+        //            })
+        //            .FirstOrDefault();
+
+        //    if (model == null)
+        //    {
+        //        // handle not found
+        //    }
+
+        //    return View(model);
+             
+            // GET: Cloths
+            public async Task<IActionResult> Index()
+            {
+                //var user = await _userManager.FindByNameAsync(User.Identity.Name);
+
+                var applicationDbContext = _context.Cloths.Include(c => c.Color).Include(c => c.Kind).Where(c => c.Category.Equals(User.Identity.Name));
+                //var model = _context.Cloths
+                //.OrderBy(r => r.Category)
+                //.Where(r => r.Category == @User.Identity.Name)
+                //.Select(r => new applicationDbContext );
+            
+                
+           
+                return View(await applicationDbContext.ToListAsync());
+            }
+        
         [Authorize]
         // GET: Cloths/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            //ApplicationUser user = await UserManager.FindByIdAsync(User.Identity.GetUserId<long>());
+            
+
             if (id == null)
             {
                 return NotFound();
@@ -42,6 +83,7 @@ namespace Wardrobe.Controllers
                 .Include(c => c.Color)
                 .Include(c => c.Kind)
                 .FirstOrDefaultAsync(m => m.Id == id);
+           
             if (cloths == null)
             {
                 return NotFound();

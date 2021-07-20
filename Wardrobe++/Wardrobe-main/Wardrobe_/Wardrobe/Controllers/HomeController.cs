@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using Wardrobe.Models;
 using System.Data.SqlClient;
 using Microsoft.Data.SqlClient;
+using Wardrobe.Data;
+using Microsoft.AspNetCore.Identity;
 
 namespace Wardrobe.Controllers
 {
@@ -17,12 +19,14 @@ namespace Wardrobe.Controllers
         SqlDataReader dr;
         SqlConnection con = new SqlConnection();
         List<LoginModel> loginModels = new List<LoginModel>();
+        List<Cloths> cloths = new List<Cloths>();
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
             con.ConnectionString = Wardrobe.Properties.Resources.ConnectionString;
+           
             
         }
 
@@ -43,16 +47,32 @@ namespace Wardrobe.Controllers
             {
                 con.Open();
                 com.Connection = con;
-                com.CommandText = "SELECT TOP (1000) [Id]      ,[UserName]      ,[NormalizedUserName]      ,[Email]  FROM[Clothes].[dbo].[AspNetUsers]";
+                com.CommandText = "SELECT TOP (1000) * FROM[Clothes].[dbo].[AspNetUsers] INNER JOIN [Clothes].[dbo].[Cloths] On Cloths.Category = AspNetUsers.Email"; ;
                 dr = com.ExecuteReader();
                 while (dr.Read())
                 {
                     loginModels.Add(new LoginModel()
-                    { Id = dr["Id"].ToString(),
+                    {
+                        Id = dr["Id"].ToString(),
                         UserName = dr["UserName"].ToString(),
-                        NormalizedUserName = dr["NormalizedUserName"].ToString() ,
-                        Email = dr["Email"].ToString() });
+                        NormalizedUserName = dr["NormalizedUserName"].ToString(),
+                        Email = dr["Email"].ToString(),
+                        
+                        
+                    });
+
+                         //cloths.Add(new Cloths()
+                         //{
+                         //    Category = dr["Category"].ToString(),
+                         //    //ColorId = dr["ColorId"].ToString(),
+                         //    //KindId = dr["KindId"].ToString(),
+                         //    CoverImageUrl = dr["CoverImageUrl"].ToString()
+                         //}));
+
                 }
+            
+                
+               
                 con.Close();
             }
             catch(Exception)
