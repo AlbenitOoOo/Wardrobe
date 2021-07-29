@@ -1,21 +1,30 @@
 ﻿@model IEnumerable<Wardrobe.Data.Cloths>
 
-@{
-    ViewData["Title"] = "Index";
-}
+@{ ViewData["Title"] = "Index"; }
 
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#myInput").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+</head>
 <h1>Index</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-
-@*<thead>
+<input id="myInput" type="text" placeholder="Search..">
+<table class="table">
+    @*<thead>
 
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.CoverImageUrl)
-            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Title)
             </th>
@@ -25,7 +34,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Category)
             </th>
-
+            <th>
+                @Html.DisplayNameFor(model => model.CoverImageUrl)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.CreatedOn)
             </th>
@@ -35,74 +46,68 @@
             <th>
                 @Html.DisplayNameFor(model => model.Color)
             </th>
-
+            <th></th>
         </tr>
     </thead>*@
-
-<div class="d-flex flex-wrap">
-    @foreach (var item in Model)
-    {
-    <div class="card">
-
-
-        <h1>
-            <img src="@("~/image/"+item.CoverImageUrl)" asp-append-version="true" />
-        </h1>
-        <h4>
-            @Html.DisplayFor(modelItem => item.Title)
-        </h4>
-        <p>
-            @Html.DisplayFor(modelItem => item.Description)
-        </p>
-
-
-        <h6>
-            @Html.DisplayFor(modelItem => item.CreatedOn)
-        </h6>
-        <h4>
-            @Html.DisplayFor(modelItem => item.Kind.Id)
-        </h4>
-        <h4>
-            @Html.DisplayFor(modelItem => item.Color.Id)
-        </h4>
-
-        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-
-    </div>
-       
-
-
-    }
-    </div>
-
-
-
-
-
-    <style>
-
-        img {
-            vertical-align: middle;
-            border-style: none;
-            width: 350px;
-            height: 350px;
-        }
-
-        .container {
-            max-width: 1540px;
-        }
-
-        .card
+    <tbody id="myTable" class="d-flex flex-wrap">
+        @foreach (var item in Model)
         {
-            margin-right: 10px;
+        <tr class="card" col-3 >
+            <td>
+                <img src="@("~/image/"+item.CoverImageUrl)" asp-append-version="true" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedOn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Kind.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Color.Id)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
         }
+    </tbody>
+</table>
 
-        .container {
-            max-width: -webkit-fill-available;
-            margin-left: 50px;
-        }
-    </style>
 
+
+
+<style>
+
+    img {
+        vertical-align: middle;
+        border-style: none;
+        width: 350px;
+        height: 350px;
+    }
+
+    .container {
+        max-width: 1540px;
+    }
+
+    .card {
+        margin-right: 10px;
+    }
+
+    .container {
+        max-width: -webkit-fill-available;
+        margin-left: 50px;
+    }
+   
+</style>
 

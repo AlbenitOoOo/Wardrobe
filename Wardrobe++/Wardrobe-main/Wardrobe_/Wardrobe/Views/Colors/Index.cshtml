@@ -1,16 +1,30 @@
 ﻿@model IEnumerable<Wardrobe.Data.Color>
 
-@{
-    ViewData["Title"] = "Index";
-}
+@{ ViewData["Title"] = "Index"; }
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+    </script>
 
 <h1>Index</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
+
 </p>
+
+<input id="myInput" type="text" placeholder="Search..">
+
 <table class="table">
-    <thead>
+    @*<thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Name)
@@ -20,8 +34,8 @@
             </th>
             <th></th>
         </tr>
-    </thead>
-    <tbody>
+    </thead>*@
+    <tbody id="myTable">
 @foreach (var item in Model) {
         <tr>
             <td>
