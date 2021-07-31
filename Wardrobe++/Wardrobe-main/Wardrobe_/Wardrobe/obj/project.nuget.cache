@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ZFxxIvq9w8dt/ItdMUY6hUBFdrIX+LvFqVQUv7PZkpxaRzMlbo+ZRSPh0PyTLJiXyz8Zr/d73Fnu3ddkqxr9uA==",
+  "dgSpecHash": "B1hXipdZpo2jLppxRN5r8myEWhtOVRfsUaKIY5zoZcB2lxMSloW612u0OsavqAWFBrqhay8b7dgOT3aze3/SHw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Michal\\Documents\\GitHub\\Wardrobe\\Wardrobe+++\\Wardrobe-main\\Wardrobe_\\Wardrobe\\Wardrobe.csproj",
+  "projectFilePath": "C:\\Users\\Michal\\Documents\\GitHub\\Wardrobe\\Wardrobe++\\Wardrobe-main\\Wardrobe_\\Wardrobe\\Wardrobe.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Michal\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Michal\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.7\\microsoft.aspnetcore.cryptography.internal.5.0.7.nupkg.sha512",

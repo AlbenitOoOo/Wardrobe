@@ -24,7 +24,7 @@ $(document).ready(function(){
 <input id="myInput" type="text" placeholder="Search..">
 
 <table class="table">
-    @*<thead>
+    <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Name)
@@ -34,7 +34,7 @@ $(document).ready(function(){
             </th>
             <th></th>
         </tr>
-    </thead>*@
+    </thead>
     <tbody id="myTable">
 @foreach (var item in Model) {
         <tr>

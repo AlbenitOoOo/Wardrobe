@@ -14,34 +14,56 @@ using Wardrobe.Models;
 
 namespace Wardrobe.Controllers
 {
+    [Authorize]
     public class ClothsController : Controller
     {
         private readonly ApplicationDbContext _context ;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly IWebHostEnvironment _hostEnvironment;
 
+        
         public ClothsController(ApplicationDbContext context, UserManager<IdentityUser> userManager, IWebHostEnvironment hostEnvironment)
         {
             _context = context;
             _userManager = userManager;
             this._hostEnvironment = hostEnvironment;
         }
-        [Authorize]
-
-            // GET: Cloths
-            public async Task<IActionResult> Index()
-            {
-                //var user = await _userManager.FindByNameAsync(User.Identity.Name);
-
-                var applicationDbContext = _context.Cloths.Include(c => c.Color).Include(c => c.Kind).Where(c => c.Category.Equals(User.Identity.Name));
-                
-            
-                
-           
-                return View(await applicationDbContext.ToListAsync());
-            }
         
-        [Authorize]
+        // GET: Cloths
+        [HttpGet]
+        public async Task<IActionResult> Index()
+        {
+            //var user = await _userManager.FindByNameAsync(User.Identity.Name);
+
+            var applicationDbContext = _context.Cloths.Include(c => c.Color).Include(c => c.Kind).Where(c => c.Category.Equals(User.Identity.Name));
+
+            var model = new ClothesSearchModel();
+            model.Cloths = await applicationDbContext.ToListAsync();
+            model.ColorCheckboxes = new List<CheckBoxListItemColor>();
+
+            var colors = _context.Color.ToList();
+            foreach (Color c in colors) 
+            {
+                model.ColorCheckboxes.Add(new CheckBoxListItemColor() { Id = c.Id, Name = c.Name });
+            }
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Index(ClothesSearchModel model)
+        {
+            //var applicationDbContext = _context.Cloths.Include(c => c.Color).Include(c => c.Kind).Join(model.ColorCheckboxes.Where(c => c.IsChecked), c => c.ColorId, cb => cb.Id, (c, cb) => new { Cloth = c }).Select(i => i.Cloth).Where(c => c.Category.Equals(User.Identity.Name));
+            
+            var Colors = model.ColorCheckboxes.Where(cb => cb.IsChecked).Select(c => c.Id).ToList();
+
+            var applicationDbContext = _context.Cloths.Include(c => c.Color).Include(c => c.Kind).Where(c => c.Category.Equals(User.Identity.Name) && Colors.Contains(c.ColorId));
+
+            model.Cloths = await applicationDbContext.ToListAsync();
+
+            return View(model);
+        }
+        
         // GET: Cloths/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -65,7 +87,8 @@ namespace Wardrobe.Controllers
 
             return View(cloths);
         }
-        [Authorize]
+        
+
         // GET: Cloths/Create
         public IActionResult Create()
         {
@@ -73,7 +96,8 @@ namespace Wardrobe.Controllers
             ViewData["KindId"] = new SelectList(_context.Kind, "Id", "Name");
             return View();
         }
-        [Authorize]
+        
+
         // POST: Cloths/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -104,7 +128,8 @@ namespace Wardrobe.Controllers
             ViewData["KindId"] = new SelectList(_context.Kind, "Id", "Id", cloths.KindId);
             return View(cloths);
         }
-        [Authorize]
+        
+
         // GET: Cloths/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -126,7 +151,8 @@ namespace Wardrobe.Controllers
         // POST: Cloths/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [Authorize]
+        
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Description,Category,KindId,ColorId,CoverImageUrl,CreatedOn")] Cloths cloths)
@@ -162,7 +188,6 @@ namespace Wardrobe.Controllers
         }
 
         // GET: Cloths/Delete/5
-        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -183,7 +208,6 @@ namespace Wardrobe.Controllers
         }
 
         // POST: Cloths/Delete/5
-        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
