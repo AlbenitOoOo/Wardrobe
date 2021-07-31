@@ -67,7 +67,11 @@ namespace Wardrobe.Controllers
             var Colors = model.ColorCheckboxes.Where(cb => cb.IsChecked).Select(c => c.Id).ToList();
             var Kinds = model.KindCheckboxes.Where(cb => cb.IsChecked).Select(c => c.Id).ToList();
 
-            var applicationDbContext = _context.Cloths.Include(c => c.Color).Include(c => c.Kind).Where(c => c.Category.Equals(User.Identity.Name) && Colors.Contains(c.ColorId) && Kinds.Contains(c.KindId));
+            var applicationDbContext = _context.Cloths.Include(c => c.Color).Include(c => c.Kind)
+                .Where(c => c.Category.Equals(User.Identity.Name)
+                        && (string.IsNullOrEmpty(model.SearchName) || c.Title.Equals(model.SearchName))
+                        && (Colors.Count == 0 || Colors.Contains(c.ColorId))
+                        && (Kinds.Count == 0 || Kinds.Contains(c.KindId)));
 
             model.Cloths = await applicationDbContext.ToListAsync();
 
