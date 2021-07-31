@@ -39,13 +39,22 @@ namespace Wardrobe.Controllers
 
             var model = new ClothesSearchModel();
             model.Cloths = await applicationDbContext.ToListAsync();
-            model.ColorCheckboxes = new List<CheckBoxListItemColor>();
+            model.ColorCheckboxes = new List<CheckBoxListItem>();
+
+            model.KindCheckboxes = new List<CheckBoxListItem>();
 
             var colors = _context.Color.ToList();
             foreach (Color c in colors) 
             {
-                model.ColorCheckboxes.Add(new CheckBoxListItemColor() { Id = c.Id, Name = c.Name });
+                model.ColorCheckboxes.Add(new CheckBoxListItem() { Id = c.Id, Name = c.Name });
             }
+
+            var kinds = _context.Kind.ToList();
+            foreach (Kind c in kinds)
+            {
+                model.KindCheckboxes.Add(new CheckBoxListItem() { Id = c.Id, Name = c.Name });
+            }
+
 
             return View(model);
         }
@@ -56,8 +65,9 @@ namespace Wardrobe.Controllers
             //var applicationDbContext = _context.Cloths.Include(c => c.Color).Include(c => c.Kind).Join(model.ColorCheckboxes.Where(c => c.IsChecked), c => c.ColorId, cb => cb.Id, (c, cb) => new { Cloth = c }).Select(i => i.Cloth).Where(c => c.Category.Equals(User.Identity.Name));
             
             var Colors = model.ColorCheckboxes.Where(cb => cb.IsChecked).Select(c => c.Id).ToList();
+            var Kinds = model.KindCheckboxes.Where(cb => cb.IsChecked).Select(c => c.Id).ToList();
 
-            var applicationDbContext = _context.Cloths.Include(c => c.Color).Include(c => c.Kind).Where(c => c.Category.Equals(User.Identity.Name) && Colors.Contains(c.ColorId));
+            var applicationDbContext = _context.Cloths.Include(c => c.Color).Include(c => c.Kind).Where(c => c.Category.Equals(User.Identity.Name) && Colors.Contains(c.ColorId) && Kinds.Contains(c.KindId));
 
             model.Cloths = await applicationDbContext.ToListAsync();
 

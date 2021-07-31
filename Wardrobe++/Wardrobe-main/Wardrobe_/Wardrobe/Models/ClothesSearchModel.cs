@@ -8,20 +8,17 @@ namespace Wardrobe.Models
 {
     public class ClothesSearchModel
     {
-        public List<CheckBoxListItemColor> ColorCheckboxes { get; set; }
-        public List<CheckBoxListItemKind> KindCheckboxes { get; set; }
+        public List<CheckBoxListItem> ColorCheckboxes { get; set; }
+        public List<CheckBoxListItem> KindCheckboxes { get; set; }
         public List<Cloths> Cloths { get; set; }
 
         public string SearchName { get; set; }
     }
 
-    public class CheckBoxListItemColor : Color
+    public class CheckBoxListItem
     {
-        public bool IsChecked { get; set; }
-    }
-
-    public class CheckBoxListItemKind : Kind
-    {
+        public int Id { get; set; }
+        public string Name { get; set; }
         public bool IsChecked { get; set; }
     }
 }
