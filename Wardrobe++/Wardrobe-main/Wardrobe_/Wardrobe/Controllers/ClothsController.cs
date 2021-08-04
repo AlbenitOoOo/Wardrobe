@@ -125,8 +125,8 @@ namespace Wardrobe.Controllers
                 
                 string extension = Path.GetExtension(cloths.ImageFile.FileName);
                 string fileName = Path.GetFileNameWithoutExtension(cloths.ImageFile.FileName);
-                cloths.CoverImageUrl = fileName + DateTime.Now.ToString("yymmssfff") + extension;
-                string path = Path.Combine(wwwRootPath + "/Image/", fileName + DateTime.Now.ToString("yymmssfff") + extension);
+                cloths.CoverImageUrl = fileName + DateTime.Now.ToString("yymm") + extension;
+                string path = Path.Combine(wwwRootPath + "/Image/", fileName + DateTime.Now.ToString("yymm") + extension);
                 using (var fileStream = new FileStream(path,FileMode.Create))
                 {
                     await cloths.ImageFile.CopyToAsync(fileStream);

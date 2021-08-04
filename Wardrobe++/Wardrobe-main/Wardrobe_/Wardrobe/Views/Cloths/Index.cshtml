@@ -2,7 +2,7 @@
 
 @{ ViewData["Title"] = "Index"; }
 
-<head>
+@*<head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         $(document).ready(function () {
@@ -14,42 +14,52 @@
             });
         });
     </script>
-</head>
+</head>*@
 <h1>Index</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<input id="myInput" type="text" placeholder="Search..">
+@*<input id="myInput" type="text" placeholder="Search..">*@
 
 @using (Html.BeginForm("Index", "Cloths", FormMethod.Post))
-{ 
+{
     <input type="submit" value="Submit" />
+    
 
     @Html.TextBoxFor(m => m.SearchName)
-    @Html.LabelFor(m => m.SearchName , "Name")
-
+    @Html.LabelFor(m => m.SearchName, "Name")
+<p></p>
+<div id="Tabelka" class="d-flex flex-wrap">
+    <div id="ramka">Wybierz Kolor Ubrań :&nbsp;&nbsp;</div>
+    
     @for (int i = 0; i < Model.ColorCheckboxes.Count; i++)
     {
-        <div>
-            
-            @Html.HiddenFor(m => m.ColorCheckboxes[i].Id)
-            @Html.HiddenFor(m => m.ColorCheckboxes[i].Name)
-            @Html.CheckBoxFor(m => m.ColorCheckboxes[i].IsChecked)
-            @Html.LabelFor(m => m.ColorCheckboxes[i].IsChecked, Model.ColorCheckboxes[i].Name)
-        </div>
+            <div id="ramka2">
+                @Html.HiddenFor(m => m.ColorCheckboxes[i].Id)
+                @Html.HiddenFor(m => m.ColorCheckboxes[i].Name)
+                @Html.CheckBoxFor(m => m.ColorCheckboxes[i].IsChecked)
+                @Html.LabelFor(m => m.ColorCheckboxes[i].IsChecked, Model.ColorCheckboxes[i].Name)
+                &nbsp;
+            </div>
     }
+    </div>
 
+<p></p> 
+
+    <div id="Tabelka" class="d-flex flex-wrap">
+        <p id="ramka">Wybierz rodziaj Ubrania :&nbsp;&nbsp;</p>
      @for (int i = 0; i < Model.KindCheckboxes.Count; i++)
     {
-        <div>
-            @Html.HiddenFor(m => m.KindCheckboxes[i].Id)
-            @Html.HiddenFor(m => m.KindCheckboxes[i].Name)
-            @Html.CheckBoxFor(m => m.KindCheckboxes[i].IsChecked)
-            @Html.LabelFor(m => m.KindCheckboxes[i].IsChecked, Model.KindCheckboxes[i].Name) 
-        </div>
+            <div id="ramka2">
+                @Html.HiddenFor(m => m.KindCheckboxes[i].Id)
+                @Html.HiddenFor(m => m.KindCheckboxes[i].Name)
+                @Html.CheckBoxFor(m => m.KindCheckboxes[i].IsChecked)
+                @Html.LabelFor(m => m.KindCheckboxes[i].IsChecked, Model.KindCheckboxes[i].Name)
+                &nbsp;
+            </div>
     }
-
+    </div>
 }
 
 
@@ -89,16 +99,16 @@
     <td>
         <img src="@("~/image/"+item.CoverImageUrl)" asp-append-version="true" />
     </td>
-    <td>
+    <td id="buttons">
         @Html.DisplayFor(modelItem => item.Title)
     </td>
-    <td>
+    <td id="buttons">
         @Html.DisplayFor(modelItem => item.Description)
     </td>
-    <td>
+    @*<td>
         @Html.DisplayFor(modelItem => item.Category)
-    </td>
-    <td>
+    </td>*@
+    @*<td>
         @Html.DisplayFor(modelItem => item.CreatedOn)
     </td>
     <td>
@@ -106,11 +116,11 @@
     </td>
     <td>
         @Html.DisplayFor(modelItem => item.Color.Id)
-    </td>
-    <td>
-        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+    </td>*@
+    <td id="buttons">
+        <a class="btn btn-success" asp-action="Edit" asp-route-id="@item.Id">Edit</a> -
+        <a class="btn btn-info" sp-action="Details" asp-route-id="@item.Id">Details</a> -
+        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
     </td>
 </tr>}
     </tbody>
@@ -124,8 +134,8 @@
     img {
         vertical-align: middle;
         border-style: none;
-        width: 350px;
-        height: 350px;
+        width: 280px;
+        
     }
 
     .container {
@@ -139,6 +149,22 @@
     .container {
         max-width: -webkit-fill-available;
         margin-left: 50px;
+    }
+
+    #ramka {
+        background: ;
+    }
+
+    #ramka2 {
+        background: #fffafa;
+    }
+
+   /* #Tabelka {
+        border: outset;
+        margin-right: 10px;
+    }*/
+    #buttons {
+        text-align: center
     }
 </style>
 
