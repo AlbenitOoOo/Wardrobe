@@ -447,3 +447,8 @@ C:\Users\Michal\Documents\GitHub\Wardrobe\Wardrobe+++\Wardrobe-main\Wardrobe_\Wa
 C:\Users\Michal\Documents\GitHub\Wardrobe\Wardrobe+++\Wardrobe-main\Wardrobe_\Wardrobe\obj\Debug\net5.0\ref\Wardrobe.dll
 C:\Users\Michal\Documents\GitHub\Wardrobe\Wardrobe+++\Wardrobe-main\Wardrobe_\Wardrobe\obj\Debug\net5.0\Wardrobe.pdb
 C:\Users\Michal\Documents\GitHub\Wardrobe\Wardrobe+++\Wardrobe-main\Wardrobe_\Wardrobe\obj\Debug\net5.0\Wardrobe.genruntimeconfig.cache
+C:\Users\Michal\Documents\GitHub\Wardrobe\Wardrobe++\Wardrobe-main\Wardrobe_\Wardrobe\obj\Debug\net5.0\Razor\Views\Sels\Create.cshtml.g.cs
+C:\Users\Michal\Documents\GitHub\Wardrobe\Wardrobe++\Wardrobe-main\Wardrobe_\Wardrobe\obj\Debug\net5.0\Razor\Views\Sels\Delete.cshtml.g.cs
+C:\Users\Michal\Documents\GitHub\Wardrobe\Wardrobe++\Wardrobe-main\Wardrobe_\Wardrobe\obj\Debug\net5.0\Razor\Views\Sels\Details.cshtml.g.cs
+C:\Users\Michal\Documents\GitHub\Wardrobe\Wardrobe++\Wardrobe-main\Wardrobe_\Wardrobe\obj\Debug\net5.0\Razor\Views\Sels\Edit.cshtml.g.cs
+C:\Users\Michal\Documents\GitHub\Wardrobe\Wardrobe++\Wardrobe-main\Wardrobe_\Wardrobe\obj\Debug\net5.0\Razor\Views\Sels\Index.cshtml.g.cs

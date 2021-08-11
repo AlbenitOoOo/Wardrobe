@@ -1,58 +1,168 @@
-﻿@{
-    ViewData["Title"]= "Home Page";
-    string[] TableHeaders = new string[] {
+﻿@model ClothesSearchModel
 
-            "Id"
-          ,"UserName"
-          ,"NormalizedUserName"
-          ,"Email"
-          ,"Category"
-          ,"CoverImageUrl"
+@{ ViewData["Title"] = "Index"; }
+
+@*<head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $("#myInput").on("keyup", function () {
+                    var value = $(this).val().toLowerCase();
+                    $("#myTable tr").filter(function () {
+                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                    });
+                });
+            });
+        </script>
+    </head>*@
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+@*<input id="myInput" type="text" placeholder="Search..">*@
+
+@using (Html.BeginForm("Index", "Cloths", FormMethod.Post))
+{
+<input type="submit" value="Submit" />
 
 
-        };
-}
+                @Html.TextBoxFor(m => m.SearchName)
+                                @Html.LabelFor(m => m.SearchName, "Name")
+                                                <p></p>
+                                                                <div id="Tabelka" class="d-flex flex-wrap">
+                                                                    <div id="ramka">Wybierz Kolor Ubrań :&nbsp;&nbsp;</div>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+                                                                    @for (int i = 0; i < Model.ColorCheckboxes.Count; i++)
+                                                                    {
+                                                    <div id="ramka2">
+                                                        @Html.HiddenFor(m => m.ColorCheckboxes[i].Id)
+                                                        @Html.HiddenFor(m => m.ColorCheckboxes[i].Name)
+                                                        @Html.CheckBoxFor(m => m.ColorCheckboxes[i].IsChecked)
+                                                        @Html.LabelFor(m => m.ColorCheckboxes[i].IsChecked, Model.ColorCheckboxes[i].Name)
+                                                        &nbsp;
+                                                    </div>
+                                                }
+                                                                </div>
 
-<div class="table">
-    <table class="table table-bordered table-hover">
-        <thead>
+                                                                                <p></p>
+
+                                                                                <div id="Tabelka" class="d-flex flex-wrap">
+                                                                                    <p id="ramka">Wybierz rodziaj Ubrania :&nbsp;&nbsp;</p>
+                                                                                    @for (int i = 0; i < Model.KindCheckboxes.Count; i++)
+                                                                                    {
+                                                                    <div id="ramka2">
+                                                                        @Html.HiddenFor(m => m.KindCheckboxes[i].Id)
+                                                                        @Html.HiddenFor(m => m.KindCheckboxes[i].Name)
+                                                                        @Html.CheckBoxFor(m => m.KindCheckboxes[i].IsChecked)
+                                                                        @Html.LabelFor(m => m.KindCheckboxes[i].IsChecked, Model.KindCheckboxes[i].Name)
+                                                                        &nbsp;
+                                                                    </div>}
+                                                                                </div>}
+
+
+
+<table class="table">
+    @*<thead>
+
             <tr>
-                @{
-                    foreach (var head in TableHeaders)
-                    {
-                        <th>
-                            @head
-                        </th>
-
-                    }
-                }
-
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Category)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CoverImageUrl)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CreatedOn)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Kind)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Color)
+                </th>
+                <th></th>
             </tr>
-        </thead>
-        @{
-            if (Model != null)
-            {
-                foreach (var Data in Model)
-                {
-                <tr>
-                    <td>@Data.Id</td>
-                    <td>@Data.UserName</td>
-                    <td>@Data.NormalizedUserName</td>
-                    <td>@Data.Email</td>
-                    @*<td>@Data.Category</td>
-                    <td>@Data.CoverImageUrl</td>*@
-                </tr>
-                }
+        </thead>*@
+    <tbody id="myTable" class="d-flex flex-wrap">
+        @foreach (var item in Model.Cloths)
+        {
+<tr class="card" col-3>
+    <td>
+        <img src="@("~/image/"+item.CoverImageUrl)" asp-append-version="true" />
+    </td>
+    <td id="buttons">
+        @Html.DisplayFor(modelItem => item.Title)
+    </td>
+    <td id="buttons">
+        @Html.DisplayFor(modelItem => item.Description)
+    </td>
+    @*<td>
+            @Html.DisplayFor(modelItem => item.Category)
+        </td>*@
+    @*<td>
+            @Html.DisplayFor(modelItem => item.CreatedOn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kind.Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Color.Id)
+        </td>*@
+    <td id="buttons">
+        <a class="btn btn-success" asp-action="Edit" asp-route-id="@item.Id">Edit</a> -
+        <a class="btn btn-info" sp-action="Details" asp-route-id="@item.Id">Details</a> -
+        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+    </td>
+</tr>
+}
+    </tbody>
+</table>
 
-            }
-        }
 
-        <tbody>
-        </tbody>
-    </table>
-</div>
+
+
+<style>
+
+    img {
+        vertical-align: middle;
+        border-style: none;
+        width: 280px;
+    }
+
+    .container {
+        max-width: 1540px;
+    }
+
+    .card {
+        margin-right: 10px;
+    }
+
+    .container {
+        max-width: -webkit-fill-available;
+        margin-left: 50px;
+    }
+
+    #ramka {
+        background:;
+    }
+
+    #ramka2 {
+        background: #fffafa;
+    }
+
+    /* #Tabelka {
+        border: outset;
+        margin-right: 10px;
+    }*/
+    #buttons {
+        text-align: center
+    }
+</style>
+

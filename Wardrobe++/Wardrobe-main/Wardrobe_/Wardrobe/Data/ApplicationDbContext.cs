@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Wardrobe.Models;
+using Wardrobe.Data;
 
 namespace Wardrobe.Data
 {
@@ -20,6 +21,8 @@ namespace Wardrobe.Data
         public DbSet<Kind> Kind { get; set; }
 
         public DbSet<LoginModel> LoginModel { get; set; }
+
+        public DbSet<Wardrobe.Data.Sel> Sel { get; set; }
     }
 }
 

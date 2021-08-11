@@ -16,10 +16,12 @@ namespace Wardrobe.Data
         public string Category { get; set; }
         public int KindId { get; set; }
         public int ColorId { get; set; }
+        public int SelId { get; set; }
         [DisplayName("Image Name")]
         public string CoverImageUrl { get; set; }
         public DateTime? CreatedOn { get; set; }
         public Kind Kind { get; set; }
+        public Sel Sel { get; set; }
 
         public Color Color { get; set; }
         public ICollection<ClothGallery> clothGallery { get; set; }

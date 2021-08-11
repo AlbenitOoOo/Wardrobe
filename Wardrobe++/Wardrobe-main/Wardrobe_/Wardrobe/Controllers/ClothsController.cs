@@ -108,6 +108,7 @@ namespace Wardrobe.Controllers
         {
             ViewData["ColorId"] = new SelectList(_context.Color, "Id", "Name");
             ViewData["KindId"] = new SelectList(_context.Kind, "Id", "Name");
+            ViewData["SelId"] = new SelectList(_context.Sel, "Id", "Name");
             return View();
         }
         
@@ -117,7 +118,7 @@ namespace Wardrobe.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Description,Category,KindId,ColorId,ImageFile,CreatedOn")] Cloths cloths)
+        public async Task<IActionResult> Create([Bind("Id,Title,Description,Category,KindId,ColorId,SelId,ImageFile,CreatedOn")] Cloths cloths)
         {
             if (ModelState.IsValid)
             {
@@ -140,6 +141,7 @@ namespace Wardrobe.Controllers
             }
             ViewData["ColorId"] = new SelectList(_context.Color, "Id", "Id", cloths.ColorId);
             ViewData["KindId"] = new SelectList(_context.Kind, "Id", "Id", cloths.KindId);
+            ViewData["SelId"] = new SelectList(_context.Sel, "Id", "Id", cloths.SelId);
             return View(cloths);
         }
         
@@ -159,6 +161,7 @@ namespace Wardrobe.Controllers
             }
             ViewData["ColorId"] = new SelectList(_context.Color, "Id", "Name", cloths.ColorId);
             ViewData["KindId"] = new SelectList(_context.Kind, "Id", "Name", cloths.KindId);
+            ViewData["SelId"] = new SelectList(_context.Sel, "Id", "Id", cloths.SelId);
             return View(cloths);
         }
 
@@ -169,7 +172,7 @@ namespace Wardrobe.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Description,Category,KindId,ColorId,CoverImageUrl,CreatedOn")] Cloths cloths)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Description,Category,KindId,ColorId,SelId,CoverImageUrl,CreatedOn")] Cloths cloths)
         {
             if (id != cloths.Id)
             {
@@ -198,6 +201,7 @@ namespace Wardrobe.Controllers
             }
             ViewData["ColorId"] = new SelectList(_context.Color, "Id", "Id", cloths.ColorId);
             ViewData["KindId"] = new SelectList(_context.Kind, "Id", "Id", cloths.KindId);
+            ViewData["SelId"] = new SelectList(_context.Sel, "Id", "Id", cloths.SelId);
             return View(cloths);
         }
 
