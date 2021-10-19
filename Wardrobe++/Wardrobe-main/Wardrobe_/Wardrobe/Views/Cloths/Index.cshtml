@@ -35,12 +35,12 @@
     
     @for (int i = 0; i < Model.ColorCheckboxes.Count; i++)
     {
-            <div id="ramka2">
+            <div id="ramka2" class="form-check">
                 @Html.HiddenFor(m => m.ColorCheckboxes[i].Id)
                 @Html.HiddenFor(m => m.ColorCheckboxes[i].Name)
                 @Html.CheckBoxFor(m => m.ColorCheckboxes[i].IsChecked)
                 @Html.LabelFor(m => m.ColorCheckboxes[i].IsChecked, Model.ColorCheckboxes[i].Name)
-                &nbsp;
+                
             </div>
     }
     </div>
@@ -51,12 +51,12 @@
         <p id="ramka">Wybierz rodziaj Ubrania :&nbsp;&nbsp;</p>
      @for (int i = 0; i < Model.KindCheckboxes.Count; i++)
     {
-            <div id="ramka2">
+            <div id="ramka2" class="form-check">
                 @Html.HiddenFor(m => m.KindCheckboxes[i].Id)
                 @Html.HiddenFor(m => m.KindCheckboxes[i].Name)
                 @Html.CheckBoxFor(m => m.KindCheckboxes[i].IsChecked)
                 @Html.LabelFor(m => m.KindCheckboxes[i].IsChecked, Model.KindCheckboxes[i].Name)
-                &nbsp;
+                
             </div>
     }
     </div>
@@ -92,17 +92,17 @@
                 <th></th>
             </tr>
         </thead>*@
-    <tbody id="myTable" class="d-flex flex-wrap">
+    <tbody id="myTable" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         @foreach (var item in Model.Cloths)
         {
 <tr class="card" col-3>
     <td>
         <img src="@("~/image/"+item.CoverImageUrl)" asp-append-version="true" />
     </td>
-    <td id="buttons">
+    <td id="buttons" class="card-text">
         @Html.DisplayFor(modelItem => item.Title)
     </td>
-    <td id="buttons">
+    <td id="desc" class="card-text">
         @Html.DisplayFor(modelItem => item.Description)
     </td>
     @*<td>
@@ -134,29 +134,34 @@
     img {
         vertical-align: middle;
         border-style: none;
-        width: 280px;
-        
-    }
-
-    .container {
-        max-width: 1540px;
+        width: 330px;
+        height: 500px;
+       
     }
 
     .card {
         margin-right: 10px;
+        width: 350px;
+        height: 750px;
     }
 
     .container {
         max-width: -webkit-fill-available;
-        margin-left: 50px;
+        margin-left: 5%;
     }
 
-    #ramka {
+/*    #ramka {
         background: ;
-    }
+    }*/
 
     #ramka2 {
         background: #fffafa;
+    }
+
+    #desc {
+        width: auto;
+        height: 100px;
+        text-align: center;
     }
 
    /* #Tabelka {
@@ -166,5 +171,6 @@
     #buttons {
         text-align: center
     }
+
 </style>
 
