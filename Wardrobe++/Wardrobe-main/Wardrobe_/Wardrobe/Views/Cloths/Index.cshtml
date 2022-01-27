@@ -61,7 +61,7 @@
     }
     </div>
 }
-                                                                                                    </div>}
+    }
 <div class="d-flex flex-wrap" style="margin-top:0 auto">
     @foreach (var item in Model.Cloths)
     {
@@ -71,21 +71,27 @@
         <div class="card-body " style="margin-top: 20px; margin: auto;">
             <img src="@("~/image/" + item.CoverImageUrl)" asp-append-version="true" />
 
+
+        </div>
+        <div id="title">
             @Html.DisplayFor(modelItem => item.Title)
-
+        </div>
+        <div id="desc">
             @Html.DisplayFor(modelItem => item.Description)
-
         </div>
-        <div class=" mt-auto">
-            <a class="btn btn-success" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
-            <a class="btn btn-info" sp-action="Details" asp-route-id="@item.Id">Details</a>
-            <a class="btn btn-danger float-right" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+        <div class=" mt-auto btn-group">
+            <a class="btn btn-sm btn-outline-secondary" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+            <a class="btn btn-sm btn-outline-secondary" sp-action="Details" asp-route-id="@item.Id">Details</a>
+            <a class="btn btn-sm btn-outline-secondary" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
         </div>
-    </div>}
-</div>
+    </div>
+       
+       
+        }
+    </div>
 
 
-<
+
 
 
 
@@ -95,8 +101,9 @@
     img {
         vertical-align: middle;
         border-style: none;
-        width: 280px;
-        height: auto;
+        width: 250px;
+        height: 497px;
+        align-items: center;
     }
 
 
@@ -104,6 +111,19 @@
         max-width: -webkit-fill-available;
         margin-left: 5%;
     }
+    #desc {
+        text-align: center;
+        font-family: serif;
+    }
+
+    #title {
+        font-family: cursive;
+        font-size: 16px;
+        text-align: center;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+
 
     /*    #ramka {
                 background: ;
