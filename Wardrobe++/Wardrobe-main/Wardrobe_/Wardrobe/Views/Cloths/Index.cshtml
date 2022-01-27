@@ -61,70 +61,31 @@
     }
     </div>
 }
+                                                                                                    </div>}
+<div class="d-flex flex-wrap" style="margin-top:0 auto">
+    @foreach (var item in Model.Cloths)
+    {
+  
+    <div class="card d-flex flex-column" style="width: 300px; margin: 10px auto;">
+
+        <div class="card-body " style="margin-top: 20px; margin: auto;">
+            <img src="@("~/image/" + item.CoverImageUrl)" asp-append-version="true" />
+
+            @Html.DisplayFor(modelItem => item.Title)
+
+            @Html.DisplayFor(modelItem => item.Description)
+
+        </div>
+        <div class=" mt-auto">
+            <a class="btn btn-success" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+            <a class="btn btn-info" sp-action="Details" asp-route-id="@item.Id">Details</a>
+            <a class="btn btn-danger float-right" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+        </div>
+    </div>}
+</div>
 
 
-
-<table class="table">
-    @*<thead>
-
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Title)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Description)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Category)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.CoverImageUrl)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.CreatedOn)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Kind)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Color)
-                </th>
-                <th></th>
-            </tr>
-        </thead>*@
-    <tbody id="myTable" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        @foreach (var item in Model.Cloths)
-        {
-<tr class="card" col-3>
-    <td>
-        <img src="@("~/image/"+item.CoverImageUrl)" asp-append-version="true" />
-    </td>
-    <td id="buttons" class="card-text">
-        @Html.DisplayFor(modelItem => item.Title)
-    </td>
-    <td id="desc" class="card-text">
-        @Html.DisplayFor(modelItem => item.Description)
-    </td>
-    @*<td>
-        @Html.DisplayFor(modelItem => item.Category)
-    </td>*@
-    @*<td>
-        @Html.DisplayFor(modelItem => item.CreatedOn)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Kind.Id)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Color.Id)
-    </td>*@
-    <td id="buttons">
-        <a class="btn btn-success" asp-action="Edit" asp-route-id="@item.Id">Edit</a> -
-        <a class="btn btn-info" sp-action="Details" asp-route-id="@item.Id">Details</a> -
-        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-    </td>
-</tr>}
-    </tbody>
-</table>
+<
 
 
 
@@ -134,43 +95,36 @@
     img {
         vertical-align: middle;
         border-style: none;
-        width: 330px;
-        height: 500px;
-       
+        width: 280px;
+        height: auto;
     }
 
-    .card {
-        margin-right: 10px;
-        width: 350px;
-        height: 750px;
-    }
 
     .container {
         max-width: -webkit-fill-available;
         margin-left: 5%;
     }
 
-/*    #ramka {
-        background: ;
-    }*/
+    /*    #ramka {
+                background: ;
+            }*/
 
-    #ramka2 {
-        background: #fffafa;
-    }
+    /*#ramka2 {
+                background: #fffafa;
+            }
 
-    #desc {
-        width: auto;
-        height: 100px;
-        text-align: center;
-    }
+            #desc {
+                width: auto;
+                height: 100px;
+                text-align: center;
+            }*/
 
-   /* #Tabelka {
-        border: outset;
-        margin-right: 10px;
-    }*/
-    #buttons {
-        text-align: center
-    }
-
+    /* #Tabelka {
+                border: outset;
+                margin-right: 10px;
+            }*/
+    /*#buttons {
+                text-align: center*/
+    /*}*/
 </style>
 

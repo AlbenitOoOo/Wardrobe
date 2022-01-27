@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "B1hXipdZpo2jLppxRN5r8myEWhtOVRfsUaKIY5zoZcB2lxMSloW612u0OsavqAWFBrqhay8b7dgOT3aze3/SHw==",
+  "dgSpecHash": "1aNxfab/T4afswfy2pk1Oz9XI+h5Y4n56olRQKK12CpB1J/h2+CrEIRhs93AjKRmPx/GHChKaCV5c4i7Nw3DDg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Michal\\Documents\\GitHub\\Wardrobe\\Wardrobe++\\Wardrobe-main\\Wardrobe_\\Wardrobe\\Wardrobe.csproj",
   "expectedPackageFiles": [
@@ -136,7 +136,8 @@
     "C:\\Users\\Michal\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\Michal\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\Michal\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\Michal\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
+    "C:\\Users\\Michal\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
+    "C:\\Users\\Michal\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.13\\microsoft.netcore.app.host.win-x64.5.0.13.nupkg.sha512"
   ],
   "logs": []
 }
