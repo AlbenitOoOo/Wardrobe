@@ -2,20 +2,9 @@
 
 @{ ViewData["Title"] = "Index"; }
 
-@*<head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $("#myInput").on("keyup", function () {
-                var value = $(this).val().toLowerCase();
-                $("#myTable tr").filter(function () {
-                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                });
-            });
-        });
-    </script>
-</head>*@
 <h1>Index</h1>
+
+
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -31,7 +20,7 @@
     @Html.LabelFor(m => m.SearchName, "Name")
 <p></p>
 <div id="Tabelka" class="d-flex flex-wrap">
-    <div id="ramka">Wybierz Kolor Ubrań :&nbsp;&nbsp;</div>
+    <div id="ramka">Wybierz Kolor Ubrań :</div>
     
     @for (int i = 0; i < Model.ColorCheckboxes.Count; i++)
     {
@@ -60,13 +49,13 @@
             </div>
     }
     </div>
-}
+
     }
-<div class="d-flex flex-wrap" style="margin-top:0 auto">
+<div id="wielka" class="d-flex flex-wrap" style="margin-top:0 auto">
     @foreach (var item in Model.Cloths)
     {
   
-    <div class="card d-flex flex-column" style="width: 300px; margin: 10px auto;">
+    <div id="karta" class="card d-flex flex-column" style="width: 300px; margin: 10px auto;">
 
         <div class="card-body " style="margin-top: 20px; margin: auto;">
             <img src="@("~/image/" + item.CoverImageUrl)" asp-append-version="true" />
@@ -110,6 +99,8 @@
     .container {
         max-width: -webkit-fill-available;
         margin-left: 5%;
+       
+        
     }
     #desc {
         text-align: center;
@@ -123,28 +114,13 @@
         margin-top: 5px;
         margin-bottom: 5px;
     }
+    #karta {
+     
+    }
+    #wielka {
+        background-color: #f8f9fa !important;
+    }
+    
 
-
-    /*    #ramka {
-                background: ;
-            }*/
-
-    /*#ramka2 {
-                background: #fffafa;
-            }
-
-            #desc {
-                width: auto;
-                height: 100px;
-                text-align: center;
-            }*/
-
-    /* #Tabelka {
-                border: outset;
-                margin-right: 10px;
-            }*/
-    /*#buttons {
-                text-align: center*/
-    /*}*/
 </style>
 

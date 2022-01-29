@@ -2,21 +2,6 @@
 
 @{ ViewData["Title"] = "Index"; }
 
-@*<head>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script>
-            $(document).ready(function () {
-                $("#myInput").on("keyup", function () {
-                    var value = $(this).val().toLowerCase();
-                    $("#myTable tr").filter(function () {
-                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                    });
-                });
-            });
-        </script>
-    </head>*@
-<h1>Index</h1>
-
 <p>
     <a asp-action="Create">Create New</a>
 </p>
@@ -24,107 +9,102 @@
 
 @using (Html.BeginForm("Index", "Cloths", FormMethod.Post))
 {
-<input type="submit" value="Submit" />
+    <input type="submit" value="Submit" />
+    
 
+    @Html.TextBoxFor(m => m.SearchName)
+    @Html.LabelFor(m => m.SearchName, "Name")
+<p></p>
 
-                @Html.TextBoxFor(m => m.SearchName)
-                                @Html.LabelFor(m => m.SearchName, "Name")
-                                                <p></p>
-                                                                <div id="Tabelka" class="d-flex flex-wrap">
-                                                                    <div id="ramka">Wybierz Kolor Ubrań :&nbsp;&nbsp;</div>
+<p id="srodek" onclick="myFunction()">'- - -  Wybierz Kolor ubrania  - - - '</p>
 
-                                                                    @for (int i = 0; i < Model.ColorCheckboxes.Count; i++)
-                                                                    {
-                                                    <div id="ramka2">
-                                                        @Html.HiddenFor(m => m.ColorCheckboxes[i].Id)
-                                                        @Html.HiddenFor(m => m.ColorCheckboxes[i].Name)
-                                                        @Html.CheckBoxFor(m => m.ColorCheckboxes[i].IsChecked)
-                                                        @Html.LabelFor(m => m.ColorCheckboxes[i].IsChecked, Model.ColorCheckboxes[i].Name)
-                                                        &nbsp;
-                                                    </div>
-                                                }
-                                                                </div>
+<div id="Tabelka" style="display:none;">
+    <div id="ramka">Wybierz Kolor Ubrań :</div>
+    <div class="d-flex flex-wrap">
 
-                                                                                <p></p>
-
-                                                                                <div id="Tabelka" class="d-flex flex-wrap">
-                                                                                    <p id="ramka">Wybierz rodziaj Ubrania :&nbsp;&nbsp;</p>
-                                                                                    @for (int i = 0; i < Model.KindCheckboxes.Count; i++)
-                                                                                    {
-                                                                    <div id="ramka2">
-                                                                        @Html.HiddenFor(m => m.KindCheckboxes[i].Id)
-                                                                        @Html.HiddenFor(m => m.KindCheckboxes[i].Name)
-                                                                        @Html.CheckBoxFor(m => m.KindCheckboxes[i].IsChecked)
-                                                                        @Html.LabelFor(m => m.KindCheckboxes[i].IsChecked, Model.KindCheckboxes[i].Name)
-                                                                        &nbsp;
-                                                                    </div>}
-                                                                                </div>}
-
-
-
-<table class="table">
-    @*<thead>
-
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Title)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Description)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Category)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.CoverImageUrl)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.CreatedOn)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Kind)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Color)
-                </th>
-                <th></th>
-            </tr>
-        </thead>*@
-    <tbody id="myTable" class="d-flex flex-wrap">
-        @foreach (var item in Model.Cloths)
+        @for (int i = 0; i < Model.ColorCheckboxes.Count; i++)
         {
-<tr class="card" col-3>
-    <td>
-        <img src="@("~/image/"+item.CoverImageUrl)" asp-append-version="true" />
-    </td>
-    <td id="buttons">
-        @Html.DisplayFor(modelItem => item.Title)
-    </td>
-    <td id="buttons">
-        @Html.DisplayFor(modelItem => item.Description)
-    </td>
-    @*<td>
-            @Html.DisplayFor(modelItem => item.Category)
-        </td>*@
-    @*<td>
-            @Html.DisplayFor(modelItem => item.CreatedOn)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Kind.Id)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Color.Id)
-        </td>*@
-    <td id="buttons">
-        <a class="btn btn-success" asp-action="Edit" asp-route-id="@item.Id">Edit</a> -
-        <a class="btn btn-info" sp-action="Details" asp-route-id="@item.Id">Details</a> -
-        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-    </td>
-</tr>
-}
-    </tbody>
-</table>
+    <div id="ramka2" class="form-check">
+        @Html.HiddenFor(m => m.ColorCheckboxes[i].Id)
+        @Html.HiddenFor(m => m.ColorCheckboxes[i].Name)
+        @Html.CheckBoxFor(m => m.ColorCheckboxes[i].IsChecked)
+        @Html.LabelFor(m => m.ColorCheckboxes[i].IsChecked, Model.ColorCheckboxes[i].Name)
 
+    </div>}
+    </div>
+    </div>
+
+<p></p> 
+
+<p id="srodek" onclick="myFunction1()">'- - -  Wybierz rodziaj Ubrania  - - - '</p>
+
+    <div id="Tabelka2" style="display:none;">
+        <p id="ramka">Wybierz rodziaj Ubrania :</p>
+        <div class="d-flex flex-wrap">
+     @for (int i = 0; i < Model.KindCheckboxes.Count; i++)
+    {
+            <div id="ramka2" class="form-check">
+                @Html.HiddenFor(m => m.KindCheckboxes[i].Id)
+                @Html.HiddenFor(m => m.KindCheckboxes[i].Name)
+                @Html.CheckBoxFor(m => m.KindCheckboxes[i].IsChecked)
+                @Html.LabelFor(m => m.KindCheckboxes[i].IsChecked, Model.KindCheckboxes[i].Name)
+                
+            </div>
+    }
+    </div>
+        </div>
+    }
+<div id="wielka" class="d-flex flex-wrap" style="margin-top:0 auto">
+    @foreach (var item in Model.Cloths)
+    {
+  
+    <div id="karta" class="card d-flex flex-column" style="width: 300px; margin: 10px auto;">
+
+        <div class="card-body " style="margin-top: 20px; margin: auto;">
+            <img src="@("~/image/" + item.CoverImageUrl)" asp-append-version="true" />
+
+
+        </div>
+        <div id="title">
+            @Html.DisplayFor(modelItem => item.Title)
+        </div>
+        <div id="desc">
+            @Html.DisplayFor(modelItem => item.Description)
+        </div>
+        <div class=" mt-auto btn-group">
+            <a class="btn btn-sm btn-outline-secondary" sp-action="Details" asp-route-id="@item.Id">Details</a>
+        </div>
+    </div>
+       
+       
+        }
+    </div>
+
+
+
+
+
+<script>
+    function myFunction() {
+        var x = document.getElementById("Tabelka");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+</script>
+
+<script>
+    function myFunction1() {
+        var x = document.getElementById("Tabelka2");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+</script>
 
 
 
@@ -133,36 +113,49 @@
     img {
         vertical-align: middle;
         border-style: none;
-        width: 280px;
+        width: 250px;
+        height: 497px;
+        align-items: center;
     }
 
-    .container {
-        max-width: 1540px;
-    }
-
-    .card {
-        margin-right: 10px;
-    }
 
     .container {
         max-width: -webkit-fill-available;
-        margin-left: 50px;
+        margin-left: 5%;
+        
+        
+    }
+    #desc {
+        text-align: center;
+        font-family: serif;
     }
 
-    #ramka {
-        background:;
+    #title {
+        font-family: cursive;
+        font-size: 16px;
+        text-align: center;
+        margin-top: 5px;
+        margin-bottom: 5px;
     }
+    #karta {
+     
+    }
+    #wielka {
+        background-color: #f8f9fa !important;
+    }
+    #Tabelka {
+        background-color: #f8f9fa !important;
+    }
+    #Tabelka2 {
+        background-color: #f8f9fa !important;
+        
+            
+    }
+    #srodek {
+        text-align: center;
+    }
+     
 
-    #ramka2 {
-        background: #fffafa;
-    }
-
-    /* #Tabelka {
-        border: outset;
-        margin-right: 10px;
-    }*/
-    #buttons {
-        text-align: center
-    }
 </style>
+
 
