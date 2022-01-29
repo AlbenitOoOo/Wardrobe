@@ -2,42 +2,51 @@
 
 @{ ViewData["Title"] = "Index"; }
 
-<h1>Index</h1>
+<h1 style="text-align:center" >Szafa z naszymi ubraniami</h1>
 
 
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-@*<input id="myInput" type="text" placeholder="Search..">*@
+<div style="text-align:center">
+    <p>
+        <a asp-action="Create">Dodaj Nowe Ubranie</a>
+    </p>
+    @*<input id="myInput" type="text" placeholder="Search..">*@
+</div>
 
 @using (Html.BeginForm("Index", "Cloths", FormMethod.Post))
-{
-    <input type="submit" value="Submit" />
-    
+{ 
+<div style="text-align:center">
+    <input type="submit" value="Szukaj" />
+</div>
 
-    @Html.TextBoxFor(m => m.SearchName)
-    @Html.LabelFor(m => m.SearchName, "Name")
+
 <p></p>
-<div id="Tabelka" class="d-flex flex-wrap">
+
+<p id="srodek" onclick="myFunction()">'- - -  Wybierz Kolor ubrania  - - - '</p>
+
+<div id="Tabelka" style="display:none;">
     <div id="ramka">Wybierz Kolor Ubrań :</div>
-    
-    @for (int i = 0; i < Model.ColorCheckboxes.Count; i++)
-    {
-            <div id="ramka2" class="form-check">
-                @Html.HiddenFor(m => m.ColorCheckboxes[i].Id)
-                @Html.HiddenFor(m => m.ColorCheckboxes[i].Name)
-                @Html.CheckBoxFor(m => m.ColorCheckboxes[i].IsChecked)
-                @Html.LabelFor(m => m.ColorCheckboxes[i].IsChecked, Model.ColorCheckboxes[i].Name)
-                
-            </div>
-    }
+    <div class="d-flex flex-wrap">
+
+        @for (int i = 0; i < Model.ColorCheckboxes.Count; i++)
+        {
+    <div id="ramka2" class="form-check">
+        @Html.HiddenFor(m => m.ColorCheckboxes[i].Id)
+        @Html.HiddenFor(m => m.ColorCheckboxes[i].Name)
+        @Html.CheckBoxFor(m => m.ColorCheckboxes[i].IsChecked)
+        @Html.LabelFor(m => m.ColorCheckboxes[i].IsChecked, Model.ColorCheckboxes[i].Name)
+
+    </div>
+        }
+    </div>
     </div>
 
 <p></p> 
 
-    <div id="Tabelka" class="d-flex flex-wrap">
-        <p id="ramka">Wybierz rodziaj Ubrania :&nbsp;&nbsp;</p>
+<p id="srodek" onclick="myFunction1()">'- - -  Wybierz rodziaj Ubrania  - - - '</p>
+
+    <div id="Tabelka2" style="display:none;">
+        <p id="ramka">Wybierz rodziaj Ubrania :</p>
+        <div class="d-flex flex-wrap">
      @for (int i = 0; i < Model.KindCheckboxes.Count; i++)
     {
             <div id="ramka2" class="form-check">
@@ -49,6 +58,7 @@
             </div>
     }
     </div>
+        </div>
 
     }
 <div id="wielka" class="d-flex flex-wrap" style="margin-top:0 auto">
@@ -81,6 +91,27 @@
 
 
 
+<script>
+    function myFunction() {
+        var x = document.getElementById("Tabelka");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+</script>
+
+<script>
+    function myFunction1() {
+        var x = document.getElementById("Tabelka2");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+</script>
 
 
 
@@ -114,12 +145,27 @@
         margin-top: 5px;
         margin-bottom: 5px;
     }
+
     #karta {
-     
     }
+
     #wielka {
         background-color: #f8f9fa !important;
     }
+
+    #Tabelka {
+        background-color: #f8f9fa !important;
+    }
+
+    #Tabelka2 {
+        background-color: #f8f9fa !important;
+    }
+
+    #srodek {
+        text-align: center;
+    }
+
+  
     
 
 </style>
