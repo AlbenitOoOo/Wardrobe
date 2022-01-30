@@ -3,59 +3,60 @@
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
-@{
-    ViewData["Title"] = "Create";
-}
+@{ ViewData["Title"] = "Create"; }
+<
+<h1>Dodaj Uberanie</h1>
 
-<h1>Create</h1>
 
-<h4>Cloths</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create" enctype="multipart/form-data">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
-                <input maxlength="30" asp-for="Title" class="form-control" />
-                <span asp-validation-for="Title" class="text-danger"></span>
+<div>
+    <div>
+        <div class="col-md-4" style="float:none;margin:auto;">
+            <div style="text-align:center">
+                <form asp-action="Create" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label class="control-label">Nazwa Ubrania</label>
+                        <input maxlength="30" asp-for="Title" class="form-control" />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Opis Ubrania</label>
+                        <input maxlength="100" asp-for="Description" class="form-control" />
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                    <div class="form-group" style="visibility:hidden; display:none; ">
+                        <label asp-for="Category" class="control-label"></label>
+                        <input asp-for="Category" value="@User.Identity.Name" class="form-control" />
+                        <span asp-validation-for="Category" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Rodzaj Ubrania</label>
+                        <select asp-for="KindId" class="form-control" asp-items="ViewBag.KindId"></select>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Kolor Ubrania</label>
+                        <select asp-for="ColorId" class="form-control" asp-items="ViewBag.ColorId"></select>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Czy przedmiot jest na sprzedaż ? Tak/Nie</label>
+                        <select asp-for="SelId" class="form-control" asp-items="ViewBag.SelId"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ImageFile" class="control-label"></label>
+                        <input asp-for="ImageFile" accept="image/*" />
+                        <span asp-validation-for="ImageFile" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Data</label>
+                        <input asp-for="CreatedOn" class="form-control" />
+                        <span asp-validation-for="CreatedOn" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input maxlength="100" asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <div class="form-group" style="visibility:hidden">
-                <label asp-for="Category" class="control-label"></label>
-                <input asp-for="Category" value="@User.Identity.Name" class="form-control" />
-                <span asp-validation-for="Category" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="KindId" class="control-label"></label>
-                <select asp-for="KindId" class="form-control" asp-items="ViewBag.KindId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="ColorId" class="control-label"></label>
-                <select asp-for="ColorId" class="form-control" asp-items="ViewBag.ColorId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="SelId" class="control-label"></label>
-                <select asp-for="SelId" class="form-control" asp-items="ViewBag.SelId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="ImageFile" class="control-label"></label>
-                <input asp-for="ImageFile" accept="image/*" />
-                <span asp-validation-for="ImageFile" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CreatedOn" class="control-label"></label>
-                <input asp-for="CreatedOn" class="form-control" />
-                <span asp-validation-for="CreatedOn" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
     </div>
 </div>
 
