@@ -638,3 +638,4 @@ C:\Users\Michal\Downloads\Wardrobe-main\Wardrobe-main\Wardrobe++\Wardrobe-main\W
 C:\Users\Michal\Downloads\Wardrobe-main\Wardrobe-main\Wardrobe++\Wardrobe-main\Wardrobe_\Wardrobe\obj\Debug\net5.0\ref\Wardrobe.dll
 C:\Users\Michal\Downloads\Wardrobe-main\Wardrobe-main\Wardrobe++\Wardrobe-main\Wardrobe_\Wardrobe\obj\Debug\net5.0\Wardrobe.pdb
 C:\Users\Michal\Downloads\Wardrobe-main\Wardrobe-main\Wardrobe++\Wardrobe-main\Wardrobe_\Wardrobe\obj\Debug\net5.0\Wardrobe.genruntimeconfig.cache
+C:\Users\Michal\Documents\GitHub\Wardrobe\Wardrobe++\Wardrobe-main\Wardrobe_\Wardrobe\obj\Debug\net5.0\Razor\Views\Home\Calendar.cshtml.g.cs

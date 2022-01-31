@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Michal\\Downloads\\Wardrobe-main\\Wardrobe-main\\Wardrobe++\\Wardrobe-main\\Wardrobe_\\Wardrobe\\Wardrobe.csproj": {}
+    "C:\\Users\\Michal\\Documents\\GitHub\\Wardrobe\\Wardrobe++\\Wardrobe-main\\Wardrobe_\\Wardrobe\\Wardrobe.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Michal\\Downloads\\Wardrobe-main\\Wardrobe-main\\Wardrobe++\\Wardrobe-main\\Wardrobe_\\Wardrobe\\Wardrobe.csproj": {
+    "C:\\Users\\Michal\\Documents\\GitHub\\Wardrobe\\Wardrobe++\\Wardrobe-main\\Wardrobe_\\Wardrobe\\Wardrobe.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Michal\\Downloads\\Wardrobe-main\\Wardrobe-main\\Wardrobe++\\Wardrobe-main\\Wardrobe_\\Wardrobe\\Wardrobe.csproj",
+        "projectUniqueName": "C:\\Users\\Michal\\Documents\\GitHub\\Wardrobe\\Wardrobe++\\Wardrobe-main\\Wardrobe_\\Wardrobe\\Wardrobe.csproj",
         "projectName": "Wardrobe",
-        "projectPath": "C:\\Users\\Michal\\Downloads\\Wardrobe-main\\Wardrobe-main\\Wardrobe++\\Wardrobe-main\\Wardrobe_\\Wardrobe\\Wardrobe.csproj",
+        "projectPath": "C:\\Users\\Michal\\Documents\\GitHub\\Wardrobe\\Wardrobe++\\Wardrobe-main\\Wardrobe_\\Wardrobe\\Wardrobe.csproj",
         "packagesPath": "C:\\Users\\Michal\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Michal\\Downloads\\Wardrobe-main\\Wardrobe-main\\Wardrobe++\\Wardrobe-main\\Wardrobe_\\Wardrobe\\obj\\",
+        "outputPath": "C:\\Users\\Michal\\Documents\\GitHub\\Wardrobe\\Wardrobe++\\Wardrobe-main\\Wardrobe_\\Wardrobe\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",

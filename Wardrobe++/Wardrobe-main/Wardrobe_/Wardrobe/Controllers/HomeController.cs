@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using MvcEvent.Models;
 
 namespace Wardrobe.Controllers
 {
@@ -127,5 +128,17 @@ namespace Wardrobe.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        public IActionResult Calendar()
+        {
+            ViewData["events"] = new[]
+            {
+                new Event { Id = 1, Title = "Video for Marisa", StartDate = "2020-11-14"},
+                new Event { Id = 2, Title = "Preparation", StartDate = "2020-11-12"},
+            };
+
+            return View();
+        }
+
     }
 }
