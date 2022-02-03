@@ -23,6 +23,8 @@ namespace Wardrobe.Data
         public DbSet<LoginModel> LoginModel { get; set; }
 
         public DbSet<Wardrobe.Data.Sel> Sel { get; set; }
+
+        public DbSet<Wardrobe.Data.Events> Events { get; set; }
     }
 }
 

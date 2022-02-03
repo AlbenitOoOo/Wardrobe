@@ -61,9 +61,17 @@ html {
 body {
     /* Margin bottom by footer height */
     margin-bottom: 60px;
-    
+    margin-top: 40px;
+    text-align: center;
+    font-size: 14px;
+    font-family: "Helvetica Nueue",Arial,Verdana,sans-serif;
+    background-image: url(../Image/20211021_2332422237.jpg)
 
+
+   
 }
+
+
 .footer {
   position: absolute;
   bottom: 0;
