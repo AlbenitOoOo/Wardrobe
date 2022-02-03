@@ -1,0 +1,105 @@
+﻿
+
+
+
+@model Wardrobe.Data.Cloths
+
+@{ ViewData["Title"] = "Details"; }
+
+<h1>Zapytanie o kupno</h1>
+
+
+<div id="karta" class="card d-flex flex-column" style="width: 300px; margin: 10px auto;">
+
+    <div class="card-body " style="margin-top: 20px; margin: auto;">
+        <img src="~/Image/@Html.DisplayFor(model => model.CoverImageUrl)"/>
+
+
+    </div>
+    <div id="title">
+        @Html.DisplayFor(model => model.Title)
+    </div>
+    <div id="desc">
+        @Html.DisplayFor(model => model.Description)
+    </div>
+    
+</div>
+
+
+
+
+
+
+
+<div class="card d-flex flex-colum" style="width: 300px; margin: 10px auto; ">
+    <div class="col-lg-4">
+        <p class="text-primary m-0 font-weight-bold">Chat</p>
+        <div class="text-white border rounded border-white shadow-lg tada animated col-sm-3 col-sm-offset-4 frame" style="max-width: 100%;background-color: rgb(214,212,221);" title="td">
+            <ul id="chatlist"></ul>
+            <div style="width: 100%;">
+                <div class="msj-rta macro" style="margin: auto;">
+                    <div class="text text-r" style="background: #392e51 !important;"><input type="text" class="mytext" placeholder="Napisz wiadomość" style="color: rgb(255,255,255);"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src='~/js/chat.js' type="text/javascript"></script>
+<link rel="stylesheet" href="~/css/chat.css" />
+
+
+<style>
+
+    img {
+        vertical-align: middle;
+        border-style: none;
+        width: 250px;
+        height: 497px;
+        align-items: center;
+    }
+
+
+    .container {
+        max-width: -webkit-fill-available;
+        margin-left: 5%;
+    }
+
+    #desc {
+        text-align: center;
+        font-family: serif;
+    }
+
+    #title {
+        font-family: cursive;
+        font-size: 16px;
+        text-align: center;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+
+    #karta {
+    }
+
+    #wielka {
+        background-color: #f8f9fa !important;
+    }
+
+    #Tabelka {
+        background-color: #f8f9fa !important;
+    }
+
+    #Tabelka2 {
+        background-color: #f8f9fa !important;
+    }
+
+    #srodek {
+        text-align: center;
+    }
+</style>
