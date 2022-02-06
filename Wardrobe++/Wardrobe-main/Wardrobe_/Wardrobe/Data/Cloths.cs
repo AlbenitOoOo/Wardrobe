@@ -29,6 +29,8 @@ namespace Wardrobe.Data
         [DisplayName("Upload File")]
         public IFormFile ImageFile { get; set; }
 
+        public ICollection<Events> ClothsId { get; set; }
+
 
     }
 }

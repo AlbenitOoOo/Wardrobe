@@ -16,6 +16,7 @@ namespace Wardrobe.Data
         public DateTime? End { get; set; }
         public string ThemeColor { get; set; }
         public bool IsFullDay { get; set; }
+        public int ClothsId { get; set; }
 
 
 
