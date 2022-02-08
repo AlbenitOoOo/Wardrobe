@@ -51,7 +51,7 @@ namespace Wardrobe.Controllers
                     v.Description = e.Description;
                     v.IsFullDay = e.IsFullDay;
                     v.ThemeColor = e.ThemeColor;
-                    v.ClothsId = e.ClothsId;
+                    
                 }
             }
             else
