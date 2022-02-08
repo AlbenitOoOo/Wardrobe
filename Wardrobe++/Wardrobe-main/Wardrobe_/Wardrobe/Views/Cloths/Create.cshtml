@@ -42,17 +42,17 @@
                         <select asp-for="SelId" class="form-control" asp-items="ViewBag.SelId"></select>
                     </div>
                     <div class="form-group">
-                        <label asp-for="ImageFile" class="control-label"></label>
+                        <label  class="control-label"></label>
                         <input asp-for="ImageFile" accept="image/*" />
                         <span asp-validation-for="ImageFile" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <label class="control-label">Data</label>
+                        <label class="control-label">Data Dodania</label>
                         <input asp-for="CreatedOn" class="form-control" />
                         <span asp-validation-for="CreatedOn" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <input type="submit" value="Create" class="btn btn-primary" />
+                        <input type="submit" value="Dodaj Ubranie" class="btn btn-primary" />
                     </div>
                 </form>
             </div>
@@ -61,7 +61,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Wróć Do szafy</a>
 </div>
 
 <p>
