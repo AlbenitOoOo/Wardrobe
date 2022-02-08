@@ -23,7 +23,7 @@ namespace Wardrobe.Controllers
         // GET: Kinds
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Kind.ToListAsync());
+            return View(await _context.Kind.Where(c => c.Description.Equals(User.Identity.Name)).ToListAsync());
         }
 
         // GET: Kinds/Details/5

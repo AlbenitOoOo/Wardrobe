@@ -24,7 +24,7 @@ namespace Wardrobe.Controllers
         // GET: Colors
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Color.ToListAsync());
+            return View(await _context.Color.Where(c => c.Description.Equals(User.Identity.Name)).ToListAsync());
         }
 
         // GET: Colors/Details/5
