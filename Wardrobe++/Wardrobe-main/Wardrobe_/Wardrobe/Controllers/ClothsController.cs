@@ -88,7 +88,6 @@ namespace Wardrobe.Controllers
         {
             //ApplicationUser user = await UserManager.FindByIdAsync(User.Identity.GetUserId<long>());
             
-
             if (id == null)
             {
                 return NotFound();
@@ -104,17 +103,21 @@ namespace Wardrobe.Controllers
                 return NotFound();
             }
 
-            return View(cloths);
+            var model = new ClothDetailsModel();
+            model.Cloth = cloths;
+            model.Events = _context.Events.Where(e => e.ClothsId == cloths.Id).ToList();
+
+            return View(model);
         }
      
 
         // GET: Cloths/Create
-        public IActionResult Create()
+        async public Task<IActionResult> Create()
         {
 
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
 
-
-            ViewData["ColorId"] = new SelectList(_context.Color, "Id", "Name", "Description");
+            ViewData["ColorId"] = new SelectList(_context.Color.Where(c => c.Description.Equals(null) || c.Description.Equals(user.Email)), "Id", "Name");
             ViewData["KindId"] = new SelectList(_context.Kind, "Id", "Name");
             ViewData["SelId"] = new SelectList(_context.Sel, "Id", "Name");
             return View();

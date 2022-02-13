@@ -30,8 +30,8 @@ namespace Wardrobe.Controllers
         [HttpGet]
         public JsonResult GetEvents()
         {
-            //var events = _context.Events.Where(c => c.Sorto.Equals(User.Identity.Name)).ToListAsync();
-            var events = _context.Events.ToList();
+            var events = _context.Events.Where(c => c.Sorto.Equals(User.Identity.Name)).ToList();
+            //var events = _context.Events.ToList();
             return new JsonResult(events);
         }
 

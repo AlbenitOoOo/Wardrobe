@@ -1,24 +1,24 @@
-﻿@model Wardrobe.Data.Cloths
+﻿@model ClothDetailsModel
 
 @{ ViewData["Title"] = "Details"; }
 
 <h1>Szczegóły + czat sprzedażowy</h1>
 
 <div>
-    
+
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
             Tytuł
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Title)
+            @Html.DisplayFor(model => model.Cloth.Title)
         </dd>
         <dt class="col-sm-2">
             Opis
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Description)
+            @Html.DisplayFor(model => model.Cloth.Description)
         </dd>
         @*<dt class="col-sm-2">
                 @Html.DisplayNameFor(model => model.Category)
@@ -27,35 +27,30 @@
                 @Html.DisplayFor(model => model.Category)
             </dd>*@
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.CoverImageUrl)
+            @Html.DisplayNameFor(model => model.Cloth.CoverImageUrl)
         </dt>
         <dd class="col-sm-10">
-            <img src="@("~/image/"+Model.CoverImageUrl)" asp-append-version="true" style=" height: 250px; " />
+            <img src="@("~/image/"+Model.Cloth.CoverImageUrl)" asp-append-version="true" style=" height: 250px; " />
         </dd>
         <dt class="col-sm-2">
             Data Dodania
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.CreatedOn)
+            @Html.DisplayFor(model => model.Cloth.CreatedOn)
         </dd>
         <dt class="col-sm-2">
             Rodzaj Ubrania
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Kind.Name)
+            @Html.DisplayFor(model => model.Cloth.Kind.Name)
         </dd>
         <dt class="col-sm-2">
             Kolor Ubrania
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Color.Name)
+            @Html.DisplayFor(model => model.Cloth.Color.Name)
         </dd>
-        @*<dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.ClothsId)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Events.Subject)
-            </dd>*@
+
         @*<dt class="col-sm-2">
                 @Html.DisplayNameFor(model => model.ClothsId)
             </dt>
@@ -69,6 +64,38 @@
                 @Html.DisplayFor(model => model.Events.Start)
             </dd>*@
     </dl>
+
+    <table>
+        <thead>
+            <tr>
+                <td>
+                    Subject
+                </td>
+                <td>
+                    Description
+                </td>
+                <td>
+                    Start
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var e in Model.Events)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayName(e.Subject)
+                    </td>
+                    <td>
+                        @Html.DisplayName(e.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayName(e.Start?.ToString("dd-MM-yyyy"))
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>
 
 <div>
@@ -94,7 +121,7 @@
 
 
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edytuj</a> |
+    <a asp-action="Edit" asp-route-id="@Model.Cloth.Id">Edytuj</a> |
     <a asp-action="Index">Powrót do szafy</a>
 </div>
 

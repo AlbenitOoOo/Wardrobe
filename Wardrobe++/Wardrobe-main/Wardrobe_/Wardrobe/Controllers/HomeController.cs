@@ -40,12 +40,8 @@ namespace Wardrobe.Controllers
         {
             //var user = await _userManager.FindByNameAsync(User.Identity.Name);
 
-            var applicationDbContext = _context.Cloths.Include(c => c.Color).Include(c => c.Kind).Where(c => c.SelId.Equals(1));
-            
-
-
             var model = new ClothesSearchModel();
-            model.Cloths = await applicationDbContext.ToListAsync();
+            model.Cloths = _context.Cloths.Include(c => c.Color).Include(c => c.Kind).Where(c => c.SelId.Equals(1)).ToList();
             model.ColorCheckboxes = new List<CheckBoxListItem>();
 
             model.KindCheckboxes = new List<CheckBoxListItem>();

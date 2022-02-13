@@ -22,7 +22,8 @@ namespace Wardrobe.Data
         public DateTime? CreatedOn { get; set; }
         public Kind Kind { get; set; }
         public Sel Sel { get; set; }
-        //public Events Events { get; set; }
+
+      
 
         public Color Color { get; set; }
         public ICollection<ClothGallery> clothGallery { get; set; }
