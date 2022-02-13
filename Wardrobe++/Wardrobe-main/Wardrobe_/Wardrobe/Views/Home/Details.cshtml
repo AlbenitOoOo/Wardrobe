@@ -12,7 +12,7 @@
 <div id="karta" class="card d-flex flex-column" style="width: 300px; margin: 10px auto;">
 
     <div class="card-body " style="margin-top: 20px; margin: auto;">
-        <img src="~/Image/@Html.DisplayFor(model => model.CoverImageUrl)"/>
+        <img src="@("~/image/"+Model.CoverImageUrl)" asp-append-version="true" style=" height: 250px; " />
 
 
     </div>
@@ -55,51 +55,3 @@
 <link rel="stylesheet" href="~/css/chat.css" />
 
 
-<style>
-
-    img {
-        vertical-align: middle;
-        border-style: none;
-        width: 250px;
-        height: 497px;
-        align-items: center;
-    }
-
-
-    .container {
-        max-width: -webkit-fill-available;
-        margin-left: 5%;
-    }
-
-    #desc {
-        text-align: center;
-        font-family: serif;
-    }
-
-    #title {
-        font-family: cursive;
-        font-size: 16px;
-        text-align: center;
-        margin-top: 5px;
-        margin-bottom: 5px;
-    }
-
-    #karta {
-    }
-
-    #wielka {
-        background-color: #f8f9fa !important;
-    }
-
-    #Tabelka {
-        background-color: #f8f9fa !important;
-    }
-
-    #Tabelka2 {
-        background-color: #f8f9fa !important;
-    }
-
-    #srodek {
-        text-align: center;
-    }
-</style>

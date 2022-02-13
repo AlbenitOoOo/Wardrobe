@@ -14,42 +14,42 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
+                <label  class="control-label">Nazwa Ubrania</label>
                 <input asp-for="Title" class="form-control" />
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
+                <label class="control-label">Opis</label>
                 <input asp-for="Description" class="form-control" />
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group" style="visibility:hidden; display:none;">
                 <label asp-for="Category" class="control-label"></label>
                 <input asp-for="Category" class="form-control" />
                 <span asp-validation-for="Category" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="KindId" class="control-label"></label>
+                <label class="control-label">Rodzaj Ubrania</label>
                 <select asp-for="KindId" class="form-control" asp-items="ViewBag.KindId"></select>
                 <span asp-validation-for="KindId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ColorId" class="control-label"></label>
+                <label  class="control-label">Kolor</label>
                 <select asp-for="ColorId" class="form-control" asp-items="ViewBag.ColorId"></select>
                 <span asp-validation-for="ColorId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="SelId" class="control-label"></label>
+                <label  class="control-label">Czy ubranie jest na sprzedaż</label>
                 <select asp-for="SelId" class="form-control" asp-items="ViewBag.SelId"></select>
                 <span asp-validation-for="SelId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="CoverImageUrl" class="control-label"></label>
+                <label class="control-label">Nazwa zdjęcia</label>
                 <input asp-for="CoverImageUrl" class="form-control" />
                 <span asp-validation-for="CoverImageUrl" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="CreatedOn" class="control-label"></label>
+                <label class="control-label">Data dodania</label>
                 <input asp-for="CreatedOn" class="form-control" />
                 <span asp-validation-for="CreatedOn" class="text-danger"></span>
             </div>

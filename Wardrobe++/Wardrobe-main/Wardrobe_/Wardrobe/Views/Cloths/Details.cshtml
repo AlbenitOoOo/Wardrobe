@@ -1,60 +1,101 @@
 ﻿@model Wardrobe.Data.Cloths
 
-@{
-    ViewData["Title"] = "Details";
-}
+@{ ViewData["Title"] = "Details"; }
 
-<h1>Details</h1>
+<h1>Szczegóły + czat sprzedażowy</h1>
 
-@*<div>
-    <h4>Cloths</h4>
+<div>
+    
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Title)
+        <dt class="col-sm-2">
+            Tytuł
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Title)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
+        <dt class="col-sm-2">
+            Opis
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Description)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Category)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Category)
-        </dd>
-        <dt class = "col-sm-2">
+        @*<dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Category)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Category)
+            </dd>*@
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.CoverImageUrl)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CoverImageUrl)
+        <dd class="col-sm-10">
+            <img src="@("~/image/"+Model.CoverImageUrl)" asp-append-version="true" style=" height: 250px; " />
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CreatedOn)
+        <dt class="col-sm-2">
+            Data Dodania
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.CreatedOn)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Kind)
+        <dt class="col-sm-2">
+            Rodzaj Ubrania
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Kind.Id)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Kind.Name)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Color)
+        <dt class="col-sm-2">
+            Kolor Ubrania
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Color.Id)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Color.Name)
         </dd>
+        @*<dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ClothsId)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Events.Subject)
+            </dd>*@
+        @*<dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ClothsId)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Events.Description)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ClothsId)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Events.Start)
+            </dd>*@
     </dl>
-</div>*@
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
 </div>
+
+<div>
+    <div class="col-lg-4">
+        <p class="text-primary m-0 font-weight-bold">Chat</p>
+        <div class="text-white border rounded border-white shadow-lg tada animated col-sm-3 col-sm-offset-4 frame" style="max-width: 100%;background-color: rgb(214,212,221);" title="td">
+            <ul id="chatlist"></ul>
+            <div style="width: 100%;">
+                <div class="msj-rta macro" style="margin: auto;">
+                    <div class="text text-r" style="background: #392e51 !important;"><input type="text" class="mytext" placeholder="Napisz wiadomość" style="color: rgb(255,255,255);"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src='~/js/chat.js' type="text/javascript"></script>
+<link rel="stylesheet" href="~/css/chat.css" />
+
+
+
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edytuj</a> |
+    <a asp-action="Index">Powrót do szafy</a>
+</div>
+
+

@@ -2,36 +2,23 @@
 
 @{ ViewData["Title"] = "Index"; }
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-$(document).ready(function(){
-  $("#myInput").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $("#myTable tr").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-  });
-});
-    </script>
 
-<h1>Index</h1>
+<h1>Rodzaje Kolorów</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Dodaj Kolor</a>
 
 </p>
 
-<input id="myInput" type="text" placeholder="Search..">
+
 
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+               Nazwa Koloru
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
+         
             <th></th>
         </tr>
     </thead>
@@ -41,13 +28,11 @@ $(document).ready(function(){
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
+         
             <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edytuj</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Szczegóły</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Usuń</a>
             </td>
         </tr>
 }
