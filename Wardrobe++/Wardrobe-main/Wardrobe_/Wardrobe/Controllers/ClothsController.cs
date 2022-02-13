@@ -35,7 +35,7 @@ namespace Wardrobe.Controllers
         {
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
 
-            var applicationDbContext = _context.Cloths.Include(c => c.Color).Include(c => c.Kind).Where(c => c.Category.Equals(User.Identity.Name));
+            var applicationDbContext = _context.Cloths.Include(c => c.Color).Include(c => c.Kind).Where(c => c.Category.Equals(user.Id));
 
             var model = new ClothesSearchModel();
             model.Cloths = await applicationDbContext.ToListAsync();
@@ -67,13 +67,14 @@ namespace Wardrobe.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(ClothesSearchModel model)
         {
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
             //var applicationDbContext = _context.Cloths.Include(c => c.Color).Include(c => c.Kind).Join(model.ColorCheckboxes.Where(c => c.IsChecked), c => c.ColorId, cb => cb.Id, (c, cb) => new { Cloth = c }).Select(i => i.Cloth).Where(c => c.Category.Equals(User.Identity.Name));
-            
+
             var Colors = model.ColorCheckboxes.Where(cb => cb.IsChecked).Select(c => c.Id).ToList();
             var Kinds = model.KindCheckboxes.Where(cb => cb.IsChecked).Select(c => c.Id).ToList();
 
             var applicationDbContext = _context.Cloths.Include(c => c.Color).Include(c => c.Kind)
-                .Where(c => c.Category.Equals(User.Identity.Name)
+                .Where(c => c.Category.Equals(user.Id)
                         && (string.IsNullOrEmpty(model.SearchName) || c.Title.Equals(model.SearchName))
                         && (Colors.Count == 0 || Colors.Contains(c.ColorId))
                         && (Kinds.Count == 0 || Kinds.Contains(c.KindId)));
@@ -106,6 +107,15 @@ namespace Wardrobe.Controllers
             var model = new ClothDetailsModel();
             model.Cloth = cloths;
             model.Events = _context.Events.Where(e => e.ClothsId == cloths.Id).ToList();
+            model.Messages = _context.Messages.Where(m => m.ClothID == cloths.Id).Join(_context.Users, m => m.UserID, u => u.Id, (m, u) => new Messages()
+            {
+                Id = m.Id,
+                UserID = m.UserID,
+                ClothID = m.ClothID,
+                Date = m.Date,
+                Text = m.Text,
+                UserName = u.UserName
+            }).ToList();
 
             return View(model);
         }
@@ -131,6 +141,8 @@ namespace Wardrobe.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Title,Description,Category,KindId,ColorId,SelId,ImageFile,CreatedOn")] Cloths cloths)
         {
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+
             if (ModelState.IsValid)
             {
                 string wwwRootPath = _hostEnvironment.WebRootPath;
@@ -138,6 +150,7 @@ namespace Wardrobe.Controllers
                 string extension = Path.GetExtension(cloths.ImageFile.FileName);
                 string fileName = Path.GetFileNameWithoutExtension(cloths.ImageFile.FileName);
                 cloths.CoverImageUrl = fileName + DateTime.Now.ToString("yymm") + extension;
+                cloths.Category = user.Id;
                 string path = Path.Combine(wwwRootPath + "/Image/", fileName + DateTime.Now.ToString("yymm") + extension);
                 using (var fileStream = new FileStream(path,FileMode.Create))
                 {
@@ -257,5 +270,7 @@ namespace Wardrobe.Controllers
         {
             return _context.Cloths.Any(e => e.Id == id);
         }
+
+
     }
 }

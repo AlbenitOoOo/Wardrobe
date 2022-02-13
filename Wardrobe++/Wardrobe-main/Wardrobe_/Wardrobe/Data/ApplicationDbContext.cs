@@ -25,6 +25,8 @@ namespace Wardrobe.Data
         public DbSet<Wardrobe.Data.Sel> Sel { get; set; }
 
         public DbSet<Wardrobe.Data.Events> Events { get; set; }
+
+        public DbSet<Messages> Messages { get; set; }
     }
 }
 

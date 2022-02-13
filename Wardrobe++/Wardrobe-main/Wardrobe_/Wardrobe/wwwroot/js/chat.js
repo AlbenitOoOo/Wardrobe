@@ -19,7 +19,7 @@ function insertChat(who, text, time = 0) {
     var date = formatAMPM(new Date());
 
     if (who == "me") {
-
+        
         control = '<li style="width:100%">' +
             '<div class="msj macro">' +
             '<div class="text text-l">' +
@@ -47,7 +47,7 @@ function insertChat(who, text, time = 0) {
 }
 
 function resetChat() {
-    $("#chatlist").empty();
+    //$("#chatlist").empty();
 }
 
 $(".mytext").on("keyup", function (e) {

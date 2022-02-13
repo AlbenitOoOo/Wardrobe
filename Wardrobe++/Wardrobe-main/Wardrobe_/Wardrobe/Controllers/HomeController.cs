@@ -102,7 +102,18 @@ namespace Wardrobe.Controllers
                 return NotFound();
             }
 
-            return View(cloths);
+            var model = new ClothDetailsModel();
+            model.Cloth = cloths;
+            model.Messages = _context.Messages.Where(m => m.ClothID == cloths.Id).Join(_context.Users, m => m.UserID, u => u.Id, (m,u) => new Messages() {
+                Id = m.Id,
+                UserID = m.UserID, 
+                ClothID = m.ClothID, 
+                Date = m.Date, 
+                Text = m.Text, 
+                UserName = u.UserName
+            }).ToList();
+
+            return View(model);
         }
 
 
@@ -137,5 +148,26 @@ namespace Wardrobe.Controllers
             return View();
         }
 
+        [HttpPost]
+        public async Task<IActionResult> AddMessage(ClothDetailsModel model)
+        {
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+
+            Messages msg = new Messages()
+            {
+                Text = model.NewMessage,
+                Date = DateTime.Now,
+                UserID = user.Id,
+                ClothID = model.Cloth.Id
+            };
+
+            _context.Messages.Add(msg);
+            _context.SaveChanges();
+
+            return RedirectToAction("Details", new { id = model.Cloth.Id });
+        }
+
     }
+
 }
+

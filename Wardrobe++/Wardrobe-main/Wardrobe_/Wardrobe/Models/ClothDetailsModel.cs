@@ -10,5 +10,7 @@ namespace Wardrobe.Models
     {
         public Cloths Cloth { get; set; }
         public List<Events> Events { get; set; }
+        public List<Messages> Messages { get; set; }
+        public string NewMessage { get; set; }
     }
 }
