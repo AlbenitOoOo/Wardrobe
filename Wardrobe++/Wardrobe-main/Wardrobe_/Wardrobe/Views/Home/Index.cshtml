@@ -2,12 +2,14 @@
 
 @{ ViewData["Title"] = "Index"; }
 
-<p>
+<h2>Sklep</h2>
+
+@*<p>
     <a asp-action="Create">Create New</a>
-</p>
+</p>*@
 @*<input id="myInput" type="text" placeholder="Search..">*@
 
-@using (Html.BeginForm("Index", "Cloths", FormMethod.Post))
+@*@using (Html.BeginForm("Index", "Cloths", FormMethod.Post))
 {
     <input type="submit" value="Submit" />
     
@@ -52,7 +54,7 @@
     }
     </div>
         </div>
-    }
+    }*@
 <div id="wielka" class="d-flex flex-wrap" style="margin-top:0 auto">
     @foreach (var item in Model.Cloths)
     {
@@ -71,7 +73,7 @@
             @Html.DisplayFor(modelItem => item.Description)
         </div>
         <div class=" mt-auto btn-group">
-            <a class="btn btn-sm btn-outline-secondary" asp-action="Details" asp-route-id="@item.Id">Details</a>
+            <a class="btn btn-sm btn-outline-secondary" asp-action="Details" asp-route-id="@item.Id">Zapytaj o zakup</a>
         </div>
     </div>
        

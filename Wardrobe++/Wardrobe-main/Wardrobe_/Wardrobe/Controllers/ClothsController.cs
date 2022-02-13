@@ -33,7 +33,7 @@ namespace Wardrobe.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            //var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
 
             var applicationDbContext = _context.Cloths.Include(c => c.Color).Include(c => c.Kind).Where(c => c.Category.Equals(User.Identity.Name));
 
@@ -46,13 +46,18 @@ namespace Wardrobe.Controllers
             var colors = _context.Color.ToList();
             foreach (Color c in colors) 
             {
-                model.ColorCheckboxes.Add(new CheckBoxListItem() { Id = c.Id, Name = c.Name });
+                if (c.Description == user.UserName)
+                {
+                    model.ColorCheckboxes.Add(new CheckBoxListItem() { Id = c.Id, Name = c.Name });
             }
+                }
 
             var kinds = _context.Kind.ToList();
             foreach (Kind c in kinds)
             {
+                if (c.Description==user.UserName) { 
                 model.KindCheckboxes.Add(new CheckBoxListItem() { Id = c.Id, Name = c.Name });
+            }
             }
 
 
@@ -101,11 +106,14 @@ namespace Wardrobe.Controllers
 
             return View(cloths);
         }
-        
+     
 
         // GET: Cloths/Create
         public IActionResult Create()
         {
+
+
+
             ViewData["ColorId"] = new SelectList(_context.Color, "Id", "Name");
             ViewData["KindId"] = new SelectList(_context.Kind, "Id", "Name");
             ViewData["SelId"] = new SelectList(_context.Sel, "Id", "Name");
