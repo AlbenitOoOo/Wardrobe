@@ -114,7 +114,7 @@ namespace Wardrobe.Controllers
 
 
 
-            ViewData["ColorId"] = new SelectList(_context.Color, "Id", "Name");
+            ViewData["ColorId"] = new SelectList(_context.Color, "Id", "Name", "Description");
             ViewData["KindId"] = new SelectList(_context.Kind, "Id", "Name");
             ViewData["SelId"] = new SelectList(_context.Sel, "Id", "Name");
             return View();

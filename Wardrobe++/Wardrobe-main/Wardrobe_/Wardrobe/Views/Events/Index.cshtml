@@ -90,6 +90,10 @@
                             }
                         </select>
                     </div>
+                    <div class="form-group" style="visibility:hidden; display:none;">
+                        <label>Subject</label>
+                        <input value="@User.Identity.Name" type="text" id="ddSorto" class="form-control" />
+                    </div>
                     <button type="button" id="btnSave" class="btn btn-success">Save</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </form>
@@ -277,6 +281,7 @@
                     Description: $('#txtDescription').val(),
                     ThemeColor: $('#ddThemeColor').val(),
                     ClothsId: $('#ddCloth').val(),
+                    Sorto: $('#ddSorto').val(),
                     IsFullDay: $('#chkIsFullDay').is(':checked')
                 }
                 

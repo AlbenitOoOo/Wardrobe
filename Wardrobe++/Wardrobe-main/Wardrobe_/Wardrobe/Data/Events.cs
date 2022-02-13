@@ -18,6 +18,8 @@ namespace Wardrobe.Data
         public bool IsFullDay { get; set; }
         public int ClothsId { get; set; }
 
+        public string Sorto { get; set; }
+
 
 
 
