@@ -128,7 +128,7 @@ namespace Wardrobe.Controllers
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
 
             ViewData["ColorId"] = new SelectList(_context.Color.Where(c => c.Description.Equals(null) || c.Description.Equals(user.Email)), "Id", "Name");
-            ViewData["KindId"] = new SelectList(_context.Kind, "Id", "Name");
+            ViewData["KindId"] = new SelectList(_context.Kind.Where(c => c.Description.Equals(null) || c.Description.Equals(user.Email)), "Id", "Name");
             ViewData["SelId"] = new SelectList(_context.Sel, "Id", "Name");
             return View();
         }

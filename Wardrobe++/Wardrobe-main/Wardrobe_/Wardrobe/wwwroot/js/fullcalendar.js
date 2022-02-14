@@ -18,12 +18,12 @@
 var defaults = {
 
 	// display
-	defaultView: 'month',
+	defaultView: 'miesi¹c',
 	aspectRatio: 1.35,
 	header: {
-		left: 'title',
+		left: 'tytu³',
 		center: '',
-		right: 'today prev,next'
+		right: 'dzisiaj poprzedni, nastêpny'
 	},
 	weekends: true,
 	weekNumbers: false,
@@ -61,19 +61,19 @@ var defaults = {
 	// locale
 	isRTL: false,
 	firstDay: 0,
-	monthNames: ['January','February','March','April','May','June','July','August','September','October','November','December'],
-	monthNamesShort: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
-	dayNames: ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
-	dayNamesShort: ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],
+	monthNames: ['Styczeñ','Luty','Marzec','Kwiecieñ','Maj','Czerwiec','Lipiec','Sierpieñ','Wrzesieñ','PaŸdziernik','Listopad','Grudzieñ'],
+	monthNamesShort: ['Sty','Lut','Mar','Kwi','Maj','Cze','Lip','Sie','Wrz','PaŸ','Lis','Gru'],
+	dayNames: ['Niedziela','Poniedzia³ek','Wtorek','Œroda','Czwartek','Pi¹tek','Sobota'],
+	dayNamesShort: ['Nie','Pon','Wto','Œro','Czw','Pi¹','Sob'],
 	buttonText: {
 		prev: "<span class='fc-text-arrow'>&lsaquo;</span>",
 		next: "<span class='fc-text-arrow'>&rsaquo;</span>",
 		prevYear: "<span class='fc-text-arrow'>&laquo;</span>",
 		nextYear: "<span class='fc-text-arrow'>&raquo;</span>",
-		today: 'today',
-		month: 'month',
-		week: 'week',
-		day: 'day'
+		today: 'dzisiaj',
+		month: 'miesi¹c',
+		week: 'tydzieñ',
+		day: 'dzieñ'
 	},
 	
 	// jquery-ui theming

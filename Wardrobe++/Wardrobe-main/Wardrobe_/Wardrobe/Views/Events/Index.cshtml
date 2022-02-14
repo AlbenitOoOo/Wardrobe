@@ -203,7 +203,7 @@
                 openAddEditForm();
             })
             $('#btnDelete').click(function () {
-                if (selectedEvent != null && confirm('Are you sure?')) {
+                if (selectedEvent != null && confirm('Jesteś pewny?')) {
                     $.ajax({
                         type: "POST",
                         url: '/Events/DeleteEvent',//tak jak reszta
