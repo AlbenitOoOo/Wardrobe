@@ -52,7 +52,7 @@ namespace Wardrobe.Areas.Identity.Pages.Account.Manage
             _logger.LogInformation("User with ID '{UserId}' has reset their authentication app key.", user.Id);
             
             await _signInManager.RefreshSignInAsync(user);
-            StatusMessage = "Your authenticator app key has been reset, you will need to configure your authenticator app using the new key.";
+            StatusMessage = "Twój klucz aplikacji uwierzytelniającej został zresetowany, musisz skonfigurować aplikację uwierzytelniającą przy użyciu nowego klucza.";
 
             return RedirectToPage("./EnableAuthenticator");
         }
