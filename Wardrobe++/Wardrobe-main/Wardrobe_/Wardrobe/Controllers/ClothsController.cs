@@ -43,21 +43,18 @@ namespace Wardrobe.Controllers
 
             model.KindCheckboxes = new List<CheckBoxListItem>();
 
-            var colors = _context.Color.ToList();
+            var colors = _context.Color.Where(c => c.Description.Equals(null) || c.Description.Equals(user.Email)).ToList();
             foreach (Color c in colors) 
             {
-                if (c.Description == user.UserName)
-                {
-                    model.ColorCheckboxes.Add(new CheckBoxListItem() { Id = c.Id, Name = c.Name });
+                model.ColorCheckboxes.Add(new CheckBoxListItem() { Id = c.Id, Name = c.Name });
             }
-                }
 
-            var kinds = _context.Kind.ToList();
+            var kinds = _context.Kind.Where(c => c.Description.Equals(null) || c.Description.Equals(user.Email)).ToList();
             foreach (Kind c in kinds)
             {
-                if (c.Description==user.UserName) { 
+                
                 model.KindCheckboxes.Add(new CheckBoxListItem() { Id = c.Id, Name = c.Name });
-            }
+            
             }
 
 
