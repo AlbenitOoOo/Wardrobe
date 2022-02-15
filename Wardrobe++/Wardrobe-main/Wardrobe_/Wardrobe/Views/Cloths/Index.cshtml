@@ -14,49 +14,49 @@
 
 @using (Html.BeginForm("Index", "Cloths", FormMethod.Post))
 {
-<div style="text-align:center">
-    <input type="submit" value="Szukaj" />
-</div>
+    <div style="text-align:center">
+        <input type="submit" value="Szukaj" />
+    </div>
 
 
-                <p></p>
+    <p></p>
 
-                                <p id="srodek" onclick="myFunction()">'- - -  Wybierz Kolor ubrania  - - - '</p>
+    <p id="srodek" onclick="myFunction()">'- - -  Wybierz Kolor ubrania  - - - '</p>
 
-                                                <div id="Tabelka" style="display:none; text-align:center;">
-                                                    <div id="ramka">Wybierz Kolor Ubrań :</div>
-                                                    <div class="d-flex flex-wrap">
+    <div id="Tabelka" style="display:none; text-align:center;">
+        <div id="ramka">Wybierz Kolor Ubrań :</div>
+        <div class="d-flex flex-wrap">
 
-                                                        @for (int i = 0; i < Model.ColorCheckboxes.Count; i++)
-                                                        {
-                                        <div id="ramka2" class="form-check">
-                                            @Html.HiddenFor(m => m.ColorCheckboxes[i].Id)
-                                            @Html.HiddenFor(m => m.ColorCheckboxes[i].Name)
-                                            @Html.CheckBoxFor(m => m.ColorCheckboxes[i].IsChecked)
-                                            @Html.LabelFor(m => m.ColorCheckboxes[i].IsChecked, Model.ColorCheckboxes[i].Name)
+            @for (int i = 0; i < Model.ColorCheckboxes.Count; i++)
+            {
+                <div id="ramka2" class="form-check">
+                    @Html.HiddenFor(m => m.ColorCheckboxes[i].Id)
+                    @Html.HiddenFor(m => m.ColorCheckboxes[i].Name)
+                    @Html.CheckBoxFor(m => m.ColorCheckboxes[i].IsChecked)
+                    @Html.LabelFor(m => m.ColorCheckboxes[i].IsChecked, Model.ColorCheckboxes[i].Name)
 
-                                        </div>}
-                                                    </div>
-                                                </div>
+                </div>}
+        </div>
+    </div>
 
-                                                                <p></p>
+    <p></p>
 
-                                                                                <p id="srodek" onclick="myFunction1()">'- - -  Wybierz rodziaj Ubrania  - - - '</p>
+    <p id="srodek" onclick="myFunction1()">'- - -  Wybierz rodziaj Ubrania  - - - '</p>
 
-                                                                                                <div id="Tabelka2" style="display:none;">
-                                                                                                    <p style="text-align:center" id="ramka">Wybierz rodziaj Ubrania :</p>
-                                                                                                    <div class="d-flex flex-wrap">
-                                                                                                        @for (int i = 0; i < Model.KindCheckboxes.Count; i++)
-                                                                                                        {
-                                                                                        <div id="ramka2" class="form-check">
-                                                                                            @Html.HiddenFor(m => m.KindCheckboxes[i].Id)
-                                                                                            @Html.HiddenFor(m => m.KindCheckboxes[i].Name)
-                                                                                            @Html.CheckBoxFor(m => m.KindCheckboxes[i].IsChecked)
-                                                                                            @Html.LabelFor(m => m.KindCheckboxes[i].IsChecked, Model.KindCheckboxes[i].Name)
+    <div id="Tabelka2" style="display:none;">
+        <p style="text-align:center" id="ramka">Wybierz rodziaj Ubrania :</p>
+        <div class="d-flex flex-wrap">
+            @for (int i = 0; i < Model.KindCheckboxes.Count; i++)
+            {
+                <div id="ramka2" class="form-check">
+                    @Html.HiddenFor(m => m.KindCheckboxes[i].Id)
+                    @Html.HiddenFor(m => m.KindCheckboxes[i].Name)
+                    @Html.CheckBoxFor(m => m.KindCheckboxes[i].IsChecked)
+                    @Html.LabelFor(m => m.KindCheckboxes[i].IsChecked, Model.KindCheckboxes[i].Name)
 
-                                                                                        </div>}
-                                                                                                    </div>
-                                                                                                </div>}
+                </div>}
+        </div>
+    </div>}
 
 <p></p>
 
@@ -64,25 +64,25 @@
     @foreach (var item in Model.Cloths)
     {
 
-<div id="karta" class="card d-flex flex-column" style="width: 300px; margin: 10px auto;">
+        <div id="karta" class="card d-flex flex-column" style="width: 300px; margin: 10px auto;">
 
-    <div class="card-body " style="margin-top: 20px; margin: auto;">
-        <img src="@("~/image/" + item.CoverImageUrl)" asp-append-version="true" />
+            <div class="card-body " style="margin-top: 20px; margin: auto;">
+                <img src="@("~/image/" + item.CoverImageUrl)" asp-append-version="true" />
 
 
-    </div>
-    <div id="title">
-        @Html.DisplayFor(modelItem => item.Title)
-    </div>
-    <div id="desc">
-        @Html.DisplayFor(modelItem => item.Description)
-    </div>
-    <div class=" mt-auto btn-group">
-        <a class="btn btn-sm btn-outline-secondary" asp-action="Edit" asp-route-id="@item.Id">Edytuj</a>
-        <a class="btn btn-sm btn-outline-secondary" asp-action="Details" asp-route-id="@item.Id">Szczegóły</a>
-        <a class="btn btn-sm btn-outline-secondary" asp-action="Delete" asp-route-id="@item.Id">Usuń</a>
-    </div>
-</div>}
+            </div>
+            <div id="title">
+                @Html.DisplayFor(modelItem => item.Title)
+            </div>
+            <div id="desc">
+                @Html.DisplayFor(modelItem => item.Description)
+            </div>
+            <div class=" mt-auto btn-group">
+                <a class="btn btn-sm btn-outline-secondary" asp-action="Edit" asp-route-id="@item.Id">Edytuj</a>
+                <a class="btn btn-sm btn-outline-secondary" asp-action="Details" asp-route-id="@item.Id">Szczegóły</a>
+                <a class="btn btn-sm btn-outline-secondary" asp-action="Delete" asp-route-id="@item.Id">Usuń</a>
+            </div>
+        </div>}
 </div>
 
 
@@ -113,7 +113,6 @@
 
 
 <style>
-
     img {
         vertical-align: middle;
         border-style: none;
@@ -121,7 +120,6 @@
         height: 497px;
         align-items: center;
     }
-
 
     .container {
         max-width: -webkit-fill-available;
@@ -160,4 +158,3 @@
         text-align: center;
     }
 </style>
-

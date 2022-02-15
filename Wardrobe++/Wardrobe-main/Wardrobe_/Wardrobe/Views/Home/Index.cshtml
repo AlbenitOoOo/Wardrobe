@@ -5,64 +5,64 @@
 
 
 @*<p>
-    <a asp-action="Create">Create New</a>
-</p>*@
+        <a asp-action="Create">Create New</a>
+    </p>*@
 @*<input id="myInput" type="text" placeholder="Search..">*@
 
 @*@using (Html.BeginForm("Index", "Cloths", FormMethod.Post))
-{
-    <input type="submit" value="Submit" />
-    
-
-   
-<p></p>
-
-<p id="srodek" onclick="myFunction()">'- - -  Wybierz Kolor ubrania  - - - '</p>
-
-<div id="Tabelka" style="display:none;">
-    <div id="ramka">Wybierz Kolor Ubrań :</div>
-    <div class="d-flex flex-wrap">
-
-        @for (int i = 0; i < Model.ColorCheckboxes.Count; i++)
-        {
-    <div id="ramka2" class="form-check">
-        @Html.HiddenFor(m => m.ColorCheckboxes[i].Id)
-        @Html.HiddenFor(m => m.ColorCheckboxes[i].Name)
-        @Html.CheckBoxFor(m => m.ColorCheckboxes[i].IsChecked)
-        @Html.LabelFor(m => m.ColorCheckboxes[i].IsChecked, Model.ColorCheckboxes[i].Name)
-
-    </div>}
-    </div>
-    </div>
-
-<p></p> 
-
-<p id="srodek" onclick="myFunction1()">'- - -  Wybierz rodziaj Ubrania  - - - '</p>
-
-    <div id="Tabelka2" style="display:none;">
-        <p id="ramka">Wybierz rodziaj Ubrania :</p>
-        <div class="d-flex flex-wrap">
-     @for (int i = 0; i < Model.KindCheckboxes.Count; i++)
     {
-            <div id="ramka2" class="form-check">
-                @Html.HiddenFor(m => m.KindCheckboxes[i].Id)
-                @Html.HiddenFor(m => m.KindCheckboxes[i].Name)
-                @Html.CheckBoxFor(m => m.KindCheckboxes[i].IsChecked)
-                @Html.LabelFor(m => m.KindCheckboxes[i].IsChecked, Model.KindCheckboxes[i].Name)
-                
-            </div>
-    }
-    </div>
+        <input type="submit" value="Submit" />
+
+
+
+    <p></p>
+
+    <p id="srodek" onclick="myFunction()">'- - -  Wybierz Kolor ubrania  - - - '</p>
+
+    <div id="Tabelka" style="display:none;">
+        <div id="ramka">Wybierz Kolor Ubrań :</div>
+        <div class="d-flex flex-wrap">
+
+            @for (int i = 0; i < Model.ColorCheckboxes.Count; i++)
+            {
+        <div id="ramka2" class="form-check">
+            @Html.HiddenFor(m => m.ColorCheckboxes[i].Id)
+            @Html.HiddenFor(m => m.ColorCheckboxes[i].Name)
+            @Html.CheckBoxFor(m => m.ColorCheckboxes[i].IsChecked)
+            @Html.LabelFor(m => m.ColorCheckboxes[i].IsChecked, Model.ColorCheckboxes[i].Name)
+
+        </div>}
         </div>
-    }*@
+        </div>
+
+    <p></p>
+
+    <p id="srodek" onclick="myFunction1()">'- - -  Wybierz rodziaj Ubrania  - - - '</p>
+
+        <div id="Tabelka2" style="display:none;">
+            <p id="ramka">Wybierz rodziaj Ubrania :</p>
+            <div class="d-flex flex-wrap">
+         @for (int i = 0; i < Model.KindCheckboxes.Count; i++)
+        {
+                <div id="ramka2" class="form-check">
+                    @Html.HiddenFor(m => m.KindCheckboxes[i].Id)
+                    @Html.HiddenFor(m => m.KindCheckboxes[i].Name)
+                    @Html.CheckBoxFor(m => m.KindCheckboxes[i].IsChecked)
+                    @Html.LabelFor(m => m.KindCheckboxes[i].IsChecked, Model.KindCheckboxes[i].Name)
+
+                </div>
+        }
+        </div>
+            </div>
+        }*@
 <div id="wielka" class="d-flex flex-wrap" style="margin-top:0 auto">
     @foreach (var item in Model.Cloths)
     {
-  
+
     <div id="karta" class="card d-flex flex-column" style="width: 300px; margin: 10px auto;">
 
         <div class="card-body " style="margin-top: 20px; margin: auto;">
-            <img src="@("~/image/" + item.CoverImageUrl)" asp-append-version="true" />
+            <img  src="@("~/image/" + item.CoverImageUrl)" asp-append-version="true" />
 
 
         </div>
@@ -73,14 +73,16 @@
             @Html.DisplayFor(modelItem => item.Description)
         </div>
         <div class=" mt-auto btn-group">
-            
-            <a class="btn btn-sm btn-outline-secondary" asp-action="Details" asp-route-id="@item.Id"><span class="glyphicon glyphicon-shopping-cart"></span>Zapytaj o zakup</a>
+
+            <a class="btn btn-sm btn-outline-secondary" style="background-color: #3e3e40; color: white; " asp-action="Details" asp-route-id="@item.Id"><span class="glyphicon glyphicon-shopping-cart"></span>Zapytaj o zakup</a>
         </div>
-    </div>
+
        
-       
-        }
-    </div>
+
+    </div>}
+</div>
+
+
 
 
 
@@ -124,9 +126,8 @@
     .container {
         max-width: -webkit-fill-available;
         margin-left: 5%;
-        
-        
     }
+
     #desc {
         text-align: center;
         font-family: serif;
@@ -139,27 +140,26 @@
         margin-top: 5px;
         margin-bottom: 5px;
     }
+
     #karta {
-     
     }
+
     #wielka {
         background-color: #f8f9fa !important;
         margin-top: 50px;
     }
+
     #Tabelka {
         background-color: #f8f9fa !important;
     }
+
     #Tabelka2 {
         background-color: #f8f9fa !important;
-        
-            
     }
+
     #srodek {
         text-align: center;
     }
-   
-     
-
 </style>
 
 

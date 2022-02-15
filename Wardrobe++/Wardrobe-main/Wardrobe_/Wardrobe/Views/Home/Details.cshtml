@@ -15,14 +15,14 @@
 
 
 
- 
+
 <div style="text-align: -webkit-center; ">
     <div class="col-lg-4">
 
         <div id="karta" class="card d-flex flex-column" style="width: 300px; margin: 10px auto;">
 
             <div class="card-body " style="margin-top: 20px; margin: auto;">
-                <img src="@("~/image/"+Model.Cloth.CoverImageUrl)" asp-append-version="true" style=" height: 250px; " />
+                <img id="myImg" src="@("~/image/"+Model.Cloth.CoverImageUrl)" asp-append-version="true" style=" height: 250px;  " />
 
             </div>
             <div id="title">
@@ -32,56 +32,59 @@
                 @Html.DisplayFor(model => model.Cloth.Description)
             </div>
 
+            <div id="myModal" class="modal">
+                <span class="close">×</span>
+                <img src="@("/image/"+Model.Cloth.CoverImageUrl)" class="modal-content" id="img01">
+                <div id="caption"></div>
+            </div>
+
         </div>
 
         @using (Html.BeginForm("AddMessage", "Home", FormMethod.Post))
         {
-            @Html.HiddenFor(Model => Model.Cloth.Id)
-            <p class="text-primary m-0 font-weight-bold">Czat</p>
-                            <div class="text-white border rounded border-white shadow-lg tada animated col-sm-3 col-sm-offset-4 frame" style="max-width: 100%;background-color: rgb(214,212,221);" title="td">
-                                <ul id="chatlist">
-                                    @foreach (var msg in Model.Messages)
-                                    {
-                                        if (msg.UserName.Equals(User.Identity.Name))
+@Html.HiddenFor(Model => Model.Cloth.Id)
+                <p class="text-primary m-0 font-weight-bold">Czat</p>
+                                <div class="text-white border rounded border-white shadow-lg tada animated col-sm-3 col-sm-offset-4 frame" style="max-width: 100%;background-color: rgb(214,212,221);" title="td">
+                                    <ul id="chatlist">
+                                        @foreach (var msg in Model.Messages)
                                         {
-                    <li style="width:100%">
-                        <div class="msj macro">
-                            <div class="text text-l">
-                                <p>@msg.UserName</p>
-                                <p>@msg.Text</p>
-                                <p><small>@msg.Date.ToString("dd-MM-yyyy MM:ss tt")</small></p>
-                            </div>
-                        </div>
-                    </li>
- }
-                                        else
-                                        {
-                    <li style="width:100%;">
-                        <div class="msj-rta macro">
-                            <div class="text text-r">
-                                <p>@msg.UserName</p>
-                                <p>@msg.Text</p>
-                                <p><small>@msg.Date.ToString("dd-MM-yyyy MM:ss tt")</small></p>
-                            </div>
-                        </div>
-                    </li>
-}
-                                    }
-                                </ul>
-                                <div style="width: 100%;">
-                                    <div class="msj-rta macro" style="margin: auto;">
-                                        <div class="text text-r" style="background: #392e51 !important;">
-                                            @*<input type="text" class="mytext" placeholder="Napisz wiadomość" style="color: rgb(255,255,255);">*@
-                                            @Html.TextBoxFor(m => m.NewMessage, "", new { @type = "text", @class = "mytext", @color = "white", @placeholder = "Napisz wiadomość" })
-                                        </div>
-                                    </div>
-                                    <button type="submit">Send</button>
+                                            if (msg.UserName.Equals(User.Identity.Name))
+                                            {
+                        <li style="width:100%">
+                            <div class="msj macro">
+                                <div class="text text-l">
+                                    <p>@msg.UserName</p>
+                                    <p>@msg.Text</p>
+                                    <p><small>@msg.Date.ToString("dd-MM-yyyy MM:ss tt")</small></p>
                                 </div>
                             </div>
-                        }
+                        </li> }
+                                            else
+                                            {
+                        <li style="width:100%;">
+                            <div class="msj-rta macro">
+                                <div style=" text-align: end;" class="text text-r">
+                                    <p>@msg.UserName</p>
+                                    <p>@msg.Text</p>
+                                    <p><small>@msg.Date.ToString("dd-MM-yyyy MM:ss tt")</small></p>
+                                </div>
+                            </div>
+                        </li>}
+                                        }
+                                    </ul>
+                                    <div style="width: 100%;">
+                                        <div class="msj-rta macro" style="margin: auto;">
+                                            <div class="text text-r" style="background: #392e51 !important;">
+                                                @*<input type="text" class="mytext" placeholder="Napisz wiadomość" style="color: rgb(255,255,255);">*@
+                                                @Html.TextBoxFor(m => m.NewMessage, "", new { @type = "text", @class = "mytext", @color = "white", @placeholder = "Napisz wiadomość" })
+                                            </div>
+                                        </div>
+                                        <button type="submit">Send</button>
+                                    </div>
+                                </div>}
 
 
-        
+
 
     </div>
 
@@ -90,7 +93,7 @@
 </div>
 
 <div style=" text-align: center;">
-    <a  asp-action="Index">Powrót do listy</a>
+    <a asp-action="Index">Powrót do listy</a>
 </div>
 
 
@@ -101,6 +104,134 @@
 <style>
     .mytext {
         color: white;
-        
     }
 </style>
+
+
+<script>
+    window.onload = function () { // add window.onload here and set it euqal to a function
+        // Get the modal
+        var modal = document.getElementById('myModal');
+
+        // Get the image and insert it inside the modal - use its "alt" text as a caption
+        var img = document.getElementById('myImg');
+        var modalImg = document.getElementById("img01");
+        var captionText = document.getElementById("caption");
+        img.onclick = function () {
+            modal.style.display = "block";
+            modalImg.src = this.src;
+            captionText.innerHTML = this.alt;
+        }
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+    } // close the function
+        </script>
+
+        <style>
+            #myImg:hover {
+                opacity: 0.7;
+            }
+
+            /* The Modal (background) */
+            .modal {
+                display: none;
+                /* Hidden by default */
+                position: fixed;
+                /* Stay in place */
+                z-index: 1;
+                /* Sit on top */
+                padding-top: 100px;
+                /* Location of the box */
+                left: 0;
+                top: 0;
+                width: 100%;
+                /* Full width */
+                height: 100%;
+                /* Full height */
+                overflow: auto;
+                /* Enable scroll if needed */
+                background-color: rgb(0, 0, 0);
+                /* Fallback color */
+                background-color: rgba(0, 0, 0, 0.9);
+                /* Black w/ opacity */
+            }
+
+            /* Modal Content (image) */
+            .modal-content {
+                margin: auto;
+                display: block;
+                width: 80%;
+                max-width: 700px;
+            }
+
+            /* Caption of Modal Image */
+            #caption {
+                margin: auto;
+                display: block;
+                width: 80%;
+                max-width: 700px;
+                text-align: center;
+                color: #ccc;
+                padding: 10px 0;
+                height: 150px;
+            }
+
+            /* Add Animation */
+            .modal-content,
+            #caption {
+                -webkit-animation-name: zoom;
+                -webkit-animation-duration: 0.6s;
+                animation-name: zoom;
+                animation-duration: 0.6s;
+            }
+
+            -webkit-keyframes zoom {
+                from
+
+            {
+                -webkit-transform: scale(0)
+            }
+
+            to {
+                -webkit-transform: scale(1)
+            }
+
+            }
+
+            keyframes zoom {
+                from
+
+            {
+                transform: scale(0.1)
+            }
+
+            to {
+                transform: scale(1)
+            }
+
+            }
+
+            /* The Close Button */
+            .close {
+                position: absolute;
+                top: 15px;
+                right: 35px;
+                color: #f1f1f1;
+                font-size: 40px;
+                font-weight: bold;
+                transition: 0.3s;
+            }
+
+                .close:hover,
+                .close:focus {
+                    color: #bbb;
+                    text-decoration: none;
+                    cursor: pointer;
+                }
+        </style>
