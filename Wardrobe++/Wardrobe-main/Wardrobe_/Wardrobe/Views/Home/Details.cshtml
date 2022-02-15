@@ -16,29 +16,31 @@
 
 
 
-<div style="text-align: -webkit-center; ">
-    <div class="col-lg-4">
+<div class="card col-12">
+    <div>
+        <div class="d-flex flex-wrap">
+            <div id="karta" class="card d-flex flex-column" style="width: 300px; margin: 10px auto; background: #3e3e40; ">
 
-        <div id="karta" class="card d-flex flex-column" style="width: 300px; margin: 10px auto;">
+                <div class="card-body " style="margin-top: 20px; margin: auto;  ">
+                    <img id="myImg" src="@("~/image/"+Model.Cloth.CoverImageUrl)" asp-append-version="true" style=" height: 250px;   " />
 
-            <div class="card-body " style="margin-top: 20px; margin: auto;">
-                <img id="myImg" src="@("~/image/"+Model.Cloth.CoverImageUrl)" asp-append-version="true" style=" height: 250px;  " />
+                </div>
 
             </div>
-            <div id="title">
-                @Html.DisplayFor(model => model.Cloth.Title)
-            </div>
-            <div id="desc">
-                @Html.DisplayFor(model => model.Cloth.Description)
-            </div>
+            <div id="karta" class="card d-flex flex-column" style="width: 600px; margin: 10px auto; background: #3e3e40; ">
 
-            <div id="myModal" class="modal">
-                <span class="close">×</span>
-                <img src="@("/image/"+Model.Cloth.CoverImageUrl)" class="modal-content" id="img01">
-                <div id="caption"></div>
-            </div>
+                
+                <div id="title">
+                    @Html.DisplayFor(model => model.Cloth.Title)
+                </div>
+                <div id="desc">
+                    @Html.DisplayFor(model => model.Cloth.Description)
+                </div>
 
+
+            </div>
         </div>
+        <div>
 
         @using (Html.BeginForm("AddMessage", "Home", FormMethod.Post))
         {
@@ -85,7 +87,7 @@
 
 
 
-
+            </div>
     </div>
 
 
