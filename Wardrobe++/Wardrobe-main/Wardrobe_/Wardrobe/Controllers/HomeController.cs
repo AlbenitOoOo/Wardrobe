@@ -18,7 +18,7 @@ using MvcEvent.Models;
 
 namespace Wardrobe.Controllers
 {
-    [Authorize]
+    
 
     public class HomeController : Controller
     {
