@@ -26,16 +26,49 @@
 
                 </div>
 
-            </div>
-            <div id="karta" class="card d-flex flex-column" style="width: 600px; margin: 10px auto; background: #3e3e40; ">
+                <div id="myModal" class="modal">
+                    <span class="close">×</span>
+                    <img src="@("~/image/"+Model.Cloth.CoverImageUrl)" class="modal-content" id="img01">
+                    <div id="caption"></div>
+                </div>
 
-                
+            </div>
+            <div id="karta" class="card d-flex flex-column" style="width: 600px; margin: 10px auto; background-color: wheat; -webkit-text-stroke: medium; ">
+
+
                 <div id="title">
-                    @Html.DisplayFor(model => model.Cloth.Title)
+
+
+
+
+
+                    <div class="summary entry-summary">
+                        <h1 class="product_title entry-title">@Html.DisplayFor(model => model.Cloth.Title)</h1>
+
+                        <div style="margin-top: 50px; margin-left: 40px;" >
+                            <div id="desc">
+                                <strong>  Opis : </strong> @Html.DisplayFor(model => model.Cloth.Description)
+                            </div>
+
+
+
+                            <ul class="list list--unstyled list--icons" data-v-ea97f7a0="" data-v-73322579="">
+                                <li><span><strong>Kolor : </strong>@Html.DisplayFor(model => model.Cloth.Color.Name)</span></li>
+                                <li><span><strong>Rodzaj Ubrania : </strong>@Html.DisplayFor(model => model.Cloth.Kind.Name)</span></li>
+                            </ul>
+
+                            <div><strong>Aktualne? : </strong>Tak</div>
+
+                        </div>
+
+
+
+
+
+                    </div>
                 </div>
-                <div id="desc">
-                    @Html.DisplayFor(model => model.Cloth.Description)
-                </div>
+
+
 
 
             </div>

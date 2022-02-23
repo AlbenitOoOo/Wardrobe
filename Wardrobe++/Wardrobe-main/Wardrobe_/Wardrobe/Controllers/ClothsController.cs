@@ -182,7 +182,7 @@ namespace Wardrobe.Controllers
             }
             ViewData["ColorId"] = new SelectList(_context.Color, "Id", "Name", cloths.ColorId);
             ViewData["KindId"] = new SelectList(_context.Kind, "Id", "Name", cloths.KindId);
-            ViewData["SelId"] = new SelectList(_context.Sel, "Id", "Id", cloths.SelId);
+            ViewData["SelId"] = new SelectList(_context.Sel, "Id", "Name", cloths.SelId);
             return View(cloths);
         }
 

@@ -79,6 +79,7 @@ namespace Wardrobe.Controllers
             {
                 return NotFound();
             }
+            ViewData["SelId"] = new SelectList(_context.Sel, "Id", "Name", sel.Name);
             return View(sel);
         }
 

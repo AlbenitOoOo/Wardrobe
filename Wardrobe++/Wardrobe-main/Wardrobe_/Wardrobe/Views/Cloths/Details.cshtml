@@ -3,56 +3,55 @@
 @{ ViewData["Title"] = "Details"; }
 
 <h1>Szczegóły + czat sprzedażowy</h1>
-
-<div>
-
-
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            Tytuł
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Cloth.Title)
-        </dd>
-        <dt class="col-sm-2">
-            Opis
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Cloth.Description)
-        </dd>
-        @*<dt class="col-sm-2">
+<div class="card col-12">
+    <div>
+        <div class="d-flex flex-wrap">
+            <div class="card d-flex flex-column" style="width: 800px; margin: 10px auto" ;>
+                <dl class="row">
+                    <dt class="col-sm-2">
+                        Tytuł
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Cloth.Title)
+                    </dd>
+                    <dt class="col-sm-2">
+                        Opis
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Cloth.Description)
+                    </dd>
+                    @*<dt class="col-sm-2">
                 @Html.DisplayNameFor(model => model.Category)
             </dt>
             <dd class="col-sm-10">
                 @Html.DisplayFor(model => model.Category)
             </dd>*@
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Cloth.CoverImageUrl)
-        </dt>
-        <dd class="col-sm-10">
-            <img id="myImg" src="@("~/image/"+Model.Cloth.CoverImageUrl)" asp-append-version="true" style=" height: 250px; " />
-        </dd>
-        <dt class="col-sm-2">
-            Data Dodania
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Cloth.CreatedOn)
-        </dd>
-        <dt class="col-sm-2">
-            Rodzaj Ubrania
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Cloth.Kind.Name)
-        </dd>
-        <dt class="col-sm-2">
-            Kolor Ubrania
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Cloth.Color.Name)
-        </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Cloth.CoverImageUrl)
+                    </dt>
+                    <dd class="col-sm-10">
+                        <img id="myImg" src="@("~/image/"+Model.Cloth.CoverImageUrl)" asp-append-version="true" style=" height: 250px; " />
+                    </dd>
+                    <dt class="col-sm-2">
+                        Data Dodania
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Cloth.CreatedOn)
+                    </dd>
+                    <dt class="col-sm-2">
+                        Rodzaj Ubrania
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Cloth.Kind.Name)
+                    </dd>
+                    <dt class="col-sm-2">
+                        Kolor Ubrania
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Cloth.Color.Name)
+                    </dd>
 
-        @*<dt class="col-sm-2">
+                    @*<dt class="col-sm-2">
                 @Html.DisplayNameFor(model => model.ClothsId)
             </dt>
             <dd class="col-sm-10">
@@ -64,12 +63,68 @@
             <dd class="col-sm-10">
                 @Html.DisplayFor(model => model.Events.Start)
             </dd>*@
-    </dl>
+                </dl>
+            </div>
 
-    <div id="myModal" class="modal">
-        <span class="close">×</span>
-        <img src="@("/image/"+Model.Cloth.CoverImageUrl)" class="modal-content" id="img01">
-        <div id="caption"></div>
+                <div id="myModal" class="modal">
+                    <span class="close">×</span>
+                    <img src="@("/image/"+Model.Cloth.CoverImageUrl)" class="modal-content" id="img01">
+                    <div id="caption"></div>
+                </div>
+
+
+                <div class="card d-flex flex-column" style="width: 400px; margin: 10px auto";>
+                    <div>
+                        @using (Html.BeginForm("AddMessage", "Home", FormMethod.Post))
+                        {
+                @Html.HiddenFor(Model => Model.Cloth.Id)
+                                <p class="text-primary m-0 font-weight-bold">Chat</p>
+                                                <div class="text-white border rounded border-white shadow-lg tada animated col-sm-3 col-sm-offset-4 frame" style="max-width: 100%;background-color: rgb(214,212,221);" title="td">
+                                                    <ul id="chatlist">
+                                                        @foreach (var msg in Model.Messages)
+                                                        {
+                                                            if (msg.UserName.Equals(User.Identity.Name))
+                                                            {
+                                        <li style="width:100%">
+                                            <div class="msj macro">
+                                                <div class="text text-l">
+                                                    <p>@msg.UserName</p>
+                                                    <p>@msg.Text</p>
+                                                    <p><small>@msg.Date.ToString("dd-MM-yyyy MM:ss tt")</small></p>
+                                                </div>
+                                            </div>
+                                        </li> }
+                                                            else
+                                                            {
+                                        <li style="width:100%;">
+                                            <div class="msj-rta macro">
+                                                <div class="text text-r">
+                                                    <p>@msg.UserName</p>
+                                                    <p>@msg.Text</p>
+                                                    <p><small>@msg.Date.ToString("dd-MM-yyyy MM:ss tt")</small></p>
+                                                </div>
+                                            </div>
+                                        </li>}
+                                                        }
+                                                    </ul>
+                                                    <div style="width: 100%;">
+                                                        <div class="msj-rta macro" style="margin: auto;">
+                                                            <div class="text text-r" style="background: #392e51 !important;">
+                                                                @*<input type="text" class="mytext" placeholder="Napisz wiadomość" style="color: rgb(255,255,255);">*@
+                                                                @Html.TextBoxFor(m => m.NewMessage, "", new { @type = "text", @class = "mytext", @placeholder = "Napisz wiadomość" })
+                                                            </div>
+                                                        </div>
+                                                        <button type="submit">Send</button>
+                                                    </div>
+                                                </div>}
+
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
     </div>
 
     <table class="table table-striped">
@@ -103,58 +158,9 @@
        }
         </tbody>
     </table>
-</div>
 
-<div>
-    <div class="col-lg-4">
-        @using (Html.BeginForm("AddMessage", "Home", FormMethod.Post))
-        {
-            @Html.HiddenFor(Model => Model.Cloth.Id)
-            <p class="text-primary m-0 font-weight-bold">Chat</p>
-                            <div class="text-white border rounded border-white shadow-lg tada animated col-sm-3 col-sm-offset-4 frame" style="max-width: 100%;background-color: rgb(214,212,221);" title="td">
-                                <ul id="chatlist">
-                                    @foreach (var msg in Model.Messages)
-                                    {
-                                        if (msg.UserName.Equals(User.Identity.Name))
-                                        {
-                    <li style="width:100%">
-                        <div class="msj macro">
-                            <div class="text text-l">
-                                <p>@msg.UserName</p>
-                                <p>@msg.Text</p>
-                                <p><small>@msg.Date.ToString("dd-MM-yyyy MM:ss tt")</small></p>
-                            </div>
-                        </div>
-                    </li>
- }
-                                        else
-                                        {
-                    <li style="width:100%;">
-                        <div class="msj-rta macro">
-                            <div class="text text-r">
-                                <p>@msg.UserName</p>
-                                <p>@msg.Text</p>
-                                <p><small>@msg.Date.ToString("dd-MM-yyyy MM:ss tt")</small></p>
-                            </div>
-                        </div>
-                    </li>
-}
-                                    }
-                                </ul>
-                                <div style="width: 100%;">
-                                    <div class="msj-rta macro" style="margin: auto;">
-                                        <div class="text text-r" style="background: #392e51 !important;">
-                                            @*<input type="text" class="mytext" placeholder="Napisz wiadomość" style="color: rgb(255,255,255);">*@
-                                            @Html.TextBoxFor(m => m.NewMessage, "", new { @type = "text", @class = "mytext", @placeholder = "Napisz wiadomość" })
-                                        </div>
-                                    </div>
-                                    <button type="submit">Send</button>
-                                </div>
-                            </div>
-                        }
 
-    </div>
-</div>
+
 
 
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
@@ -304,4 +310,10 @@
             text-decoration: none;
             cursor: pointer;
         }
+
+    .container {
+        max-width: -webkit-fill-available;
+        margin-left: 5%;
+    }
+
 </style>
