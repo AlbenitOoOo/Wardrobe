@@ -253,7 +253,7 @@ namespace Wardrobe.Controllers
         {
             var cloths = await _context.Cloths.FindAsync(id);
 
-            //delete image from Image
+            //delete image from serwer
             var imagePath = Path.Combine(_hostEnvironment.WebRootPath, "image", cloths.CoverImageUrl);
             if (System.IO.File.Exists(imagePath))
                 System.IO.File.Delete(imagePath);
