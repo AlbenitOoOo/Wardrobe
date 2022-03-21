@@ -82,6 +82,7 @@ namespace Wardrobe.Controllers
         }
 
         // GET: Cloths/Details/5
+        [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
             //ApplicationUser user = await UserManager.FindByIdAsync(User.Identity.GetUserId<long>());
