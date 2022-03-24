@@ -27,6 +27,7 @@ Adding an event
 In the details of each garment you will find its features, chat and a table showing calendar events, where, when and how the garment was used.
 
 Response:
+
 ![image](https://user-images.githubusercontent.com/82273766/159952106-4ba5649e-a0c2-4f92-9c32-3695b412f104.png)
 ![image](https://user-images.githubusercontent.com/82273766/159952145-c04286e9-6ed1-4a1f-bc8c-5de52398e3b1.png)
 ![image](https://user-images.githubusercontent.com/82273766/159952237-820670af-06de-4cef-b969-b3e3f2df9e3e.png)
