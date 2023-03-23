@@ -1,5 +1,4 @@
-# "Wirtualna Szafa " The idea of the application is a wardrobe that will allow you to add clothes and then, when the user puts 
-on the clothes, for example on a date, put them in the calendar so as not to go in the same clothes on the next date with the same person.
+# "Wirtualna Szafa " The idea of the application is a wardrobe that allows users to add their own clothes and then add them to a calendar indicating when and with whom they were worn. In addition, users can sort, search, exchange, or sell clothes between each other (the entire exchange process takes place outside of the application's intervention). The application provides only a chat for contact and the ability to find items that interest us.
 ![image](https://user-images.githubusercontent.com/82273766/159949950-0127e55a-f8ef-4137-8207-87807ef8aa3d.png)
 
 Each user only has and sees his clothes in his wardrobe. he can sort them, for example, by color or type
